@@ -26,7 +26,7 @@ export default class ModuleRow extends React.Component
                     {this.props.module.title}
 
                 <span className="float-right">
-                    <i className="fa fa-trash"></i>
+                    <i className="fa fa-trash" id={this.props.module.id} onClick={()=>{this.props.delete(this.props.module.id)}}></i>
                     </span>
 
             </li>

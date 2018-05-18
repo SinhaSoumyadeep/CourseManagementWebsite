@@ -15,12 +15,22 @@ export default class ModuleList extends React.Component {
         this.setModuleTitle = this.setModuleTitle.bind(this);
         this.createModule = this.createModule.bind(this);
         this.moduleService = ModuleService.instance;
+        this.deleteModule = this.deleteModule.bind(this);
 
     }
 
     setCourseId(courseId) {
         this.setState({courseId: courseId});
         this.findAllModules(courseId);
+
+    }
+
+    deleteModule(id) {
+        console.log("inside delete module "+id)
+        this.moduleService
+            .deleteCourse(id).then(() => { this.findAllModules(this.state.courseId) });
+
+
 
     }
 
@@ -62,7 +72,7 @@ export default class ModuleList extends React.Component {
     moduleRows() {
         if(module.title!='') {
             var rows = this.state.modules.map((module) => {
-                return ( <ModuleRow module={module} key={module.id} />)
+                return ( <ModuleRow delete={this.deleteModule} module={module} key={module.id} />)
 
             });
             return (
@@ -97,7 +107,7 @@ export default class ModuleList extends React.Component {
                         <tr>
 
                             <td>
-                                <input className="form-control" onChange={this.setModuleTitle}/>
+                                <input className="form-control" placeholder="Module" onChange={this.setModuleTitle}/>
                             </td>
                         </tr>
                         <tr>
