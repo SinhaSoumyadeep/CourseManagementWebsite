@@ -3,13 +3,17 @@ import CourseList from './CourseList';
 import CourseEditor from './CourseEditor'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import LessonList from "./LessonList";
-import $ from 'jquery';
-
 
 
 
 export default class CourseManager
     extends Component {
+
+
+
+
+
+
     render() {
         return (
             <Router>
@@ -22,6 +26,7 @@ export default class CourseManager
                     </Route>
                     <Route path="/course/:courseId/module/:moduleId" component={LessonList}>
                     </Route>
+
 
 
 

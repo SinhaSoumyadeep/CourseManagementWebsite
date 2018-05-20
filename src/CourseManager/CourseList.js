@@ -53,6 +53,9 @@ import $ from 'jquery';
 
 
 
+
+
+
      courseRows() {
          var rows = this.state.courses.map((course) => {
              return ( <CourseRow delete={this.deleteCourse} course={course} key={course.id} />)
@@ -83,6 +86,8 @@ import $ from 'jquery';
              .then(() => { this.findAllCourses(); });
 
      }
+
+
 
 
 
@@ -147,6 +152,8 @@ import $ from 'jquery';
                              <td >
                                  <ul id="sortable">
                                  {this.courseRows()}
+
+
                                  </ul>
                              </td>
 

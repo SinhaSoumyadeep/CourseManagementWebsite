@@ -45,9 +45,16 @@ body {
     color: #4b9ee5;
 }
 .fa-times{
-    color: #343d46;
+    color: red;
     cursor: pointer;
 }
+
+.fa-check{
+
+    color: green;
+    cursor: pointer;
+}
+
 .navbartitle {
     margin-top: 65px;
     top: 5px;
@@ -68,3 +75,24 @@ a {text-decoration: none; }
     margin: 27px;
 }
 
+
+.modal2
+{
+    overflow: auto;
+    margin-left: 405px;
+
+}
+.modal-content {
+    display: -ms-flexbox;
+    display: flex;
+    height: 53px;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 63%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3.3rem;
+    outline: 0;
+}
