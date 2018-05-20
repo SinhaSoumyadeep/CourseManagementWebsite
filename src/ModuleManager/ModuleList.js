@@ -2,6 +2,10 @@ import React from 'react';
 import ModuleEditor from '../CourseManager/ModuleEditor';
 import ModuleService from '../CourseService/ModuleService';
 import ModuleRow from "../CourseManager/ModuleRow";
+import $ from 'jquery'
+
+
+
 
 
 
@@ -72,7 +76,7 @@ export default class ModuleList extends React.Component {
     moduleRows() {
         if(module.title!='') {
             var rows = this.state.modules.map((module) => {
-                return ( <ModuleRow delete={this.deleteModule} module={module} key={module.id} />)
+                return ( <ModuleRow delete={this.deleteModule} courseid={this.state.courseId} module={module} key={module.id} />)
 
             });
             return (
@@ -99,29 +103,64 @@ export default class ModuleList extends React.Component {
         return (
 
 
-                <div >
-                    <h4>Module List for courseId:{this.state.courseId}</h4>
+                <div className="module">
 
+
+                    <div className="navbar">
+                        <table >
+                            <tr>
+                                <td width="5%">
+                                    <i className="fa fa-bars"></i>
+                                </td>
+                                <td width="11%">
+                                    Course Id {this.state.courseId}
+                                </td>
+                                <td width="65%">
+
+                                    <input className="form-control" placeholder="Module" onChange={this.setModuleTitle}/>
+                                </td>
+                                <td width="11%">
+
+                                    <button className="btn btn-danger btn-block" onClick={this.createModule}>
+                                        <i className="fa fa-plus"></i>
+                                    </button>
+                                </td>
+
+
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+                    <div className="navbartitle">
+                        <table >
+                            <tr>
+                                <td width="7%">
+
+                                </td>
+                                <td width="11%">
+                                    Title
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+
+
+                    <div className="main">
                     <table className="table">
 
-                        <tr>
-
-                            <td>
-                                <input className="form-control" placeholder="Module" onChange={this.setModuleTitle}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button className="btn btn-primary btn-block" onClick={this.createModule}>
-                                    <i className="fa fa-plus"></i>
-                                </button>
-                            </td>
-                        </tr>
 
                         <tbody>
-                        <tr>
-                            <td>
+                        <tr >
+                            <td className="moduleRow">
+                                <ul id="sortable">
                                 {this.moduleRows()}
+                                </ul>
                             </td>
                         </tr>
 
@@ -129,6 +168,7 @@ export default class ModuleList extends React.Component {
 
                         </tbody>
                     </table>
+                    </div>
 
                 </div>
 

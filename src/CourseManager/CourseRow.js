@@ -22,18 +22,34 @@ export default class CourseRow extends React.Component
 
 
     courseRows() {
+
+        var id = this.props.course.id;
+        var navurl = "/course/".concat(id);
         return (
 
 
-                <li className="list-group-item">
+            <div className="list-group">
+                <a  className="list-group-item list-group-item-action">
+
                     <Link to={`/course/${this.props.course.id}`}>
-                        {this.props.course.title}
+                        <i className="fa fa-folder"></i>
+                        <span id="courseTitle"> {this.props.course.title}</span>
+
+
                     </Link>
                     <span className="float-right">
-                    <i className="fa fa-trash" id={this.props.course.id} onClick={()=>{this.props.delete(this.props.course.id)}}></i>
+
+
+                    <i className="fa fa-times" id={this.props.course.id} onClick={()=>{this.props.delete(this.props.course.id)}}></i>
+
                     </span>
 
-               </li>
+                </a>
+
+
+            </div>
+
+
 
 
         )

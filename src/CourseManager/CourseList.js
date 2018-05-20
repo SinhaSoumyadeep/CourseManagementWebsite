@@ -1,10 +1,16 @@
 import React from 'react'
 import CourseRow from "./CourseRow";
 import  CourseService from "../CourseService/CourseService"
-import ModuleList from "../ModuleManager/ModuleList"
+import '../CSS/style.css'
+import '../JS/modal.css'
+import $ from 'jquery';
+
+
 
  export default class CourseList extends React.Component
  {
+
+
 
 
      constructor() {
@@ -87,34 +93,63 @@ import ModuleList from "../ModuleManager/ModuleList"
          return(
 
              <div>
-
-                 <div>
-                     <div>
-                         <h3>Course {this.state.courseId}
-                         </h3>
-                     </div>
-
-                     <table className="table">
-
+                 <div className="navbar">
+                     <table >
                          <tr>
+                                <td width="5%">
+                                    <i className="fa fa-bars"></i>
+                                </td>
+                             <td width="11%">
+                                 CourseManager
+                             </td>
+                             <td width="65%">
 
-                             <td>
                                  <input className="form-control" placeholder="Course" onChange={this.addCourse} value={this.state.courses.title}/>
                              </td>
-                         </tr>
-                         <tr>
-                             <td>
-                                 <button className="btn btn-primary btn-block" onClick={this.createModule}>
+                             <td width="11%">
+
+                                 <button className="btn btn-danger btn-block" onClick={this.createModule}>
                                      <i className="fa fa-plus"></i>
                                  </button>
                              </td>
+
+
                          </tr>
+
+
+                     </table>
+                 </div>
+
+                 <div className="navbartitle">
+                     <table >
+                         <tr>
+                             <td width="7%">
+
+                             </td>
+                             <td width="11%">
+                                 Title
+                             </td>
+
+                         </tr>
+
+
+                     </table>
+                 </div>
+
+
+                 <div className="main">
+                     <table className="table">
+
 
                          <tbody>
                          <tr>
-                             <td>
-                                    {this.courseRows()}
+
+                             <td >
+                                 <ul id="sortable">
+                                 {this.courseRows()}
+                                 </ul>
                              </td>
+
                          </tr>
 
 
@@ -122,6 +157,15 @@ import ModuleList from "../ModuleManager/ModuleList"
                          </tbody>
                      </table>
                  </div>
+
+
+
+
+
+
+
+
+
 
              </div>
 

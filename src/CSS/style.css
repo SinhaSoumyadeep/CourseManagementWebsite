@@ -1,0 +1,70 @@
+body {
+    margin:0;
+    background-color: #eaeaea;
+
+
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #4b9ee5;
+    top: 0px;
+    width: 100%;
+    color: white;
+    position: fixed;
+    z-index: 10;
+}
+
+.titlebar {
+    overflow: hidden;
+    background-color: #eaeaea;
+    top: 5px;
+    width: 100%;
+    color: white;
+}
+
+
+
+.main {
+    padding: 16px;
+    margin-top: 0px;
+    margin-left: 25px;
+    margin-right: 25px;
+
+}
+
+#courseTitle{
+    margin-left: 20px;
+    font-size: small;
+
+
+}
+
+.fa-folder{
+
+    color: #4b9ee5;
+}
+.fa-times{
+    color: #343d46;
+    cursor: pointer;
+}
+.navbartitle {
+    margin-top: 65px;
+    top: 5px;
+    width: 100%;
+    color: #343d46;
+}
+
+a {text-decoration: none; }
+
+.module
+{
+    margin-top: 13px;
+
+}
+
+.card
+{
+    margin: 27px;
+}
+

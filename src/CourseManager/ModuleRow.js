@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import $ from 'jquery'
+
 
 
 
@@ -20,16 +22,26 @@ export default class ModuleRow extends React.Component
     ModuleRows() {
         return (
 
+            <div className="list-group">
+                <a  className="list-group-item list-group-item-action">
 
-            <li className="list-group-item">
+                    <Link to={`/course/${this.props.courseid}/module/${this.props.module.id}`}>
+                        <i className="fa fa-folder"></i>
+                        <span id="courseTitle"> {this.props.module.title}</span>
+                    </Link>
 
-                    {this.props.module.title}
 
-                <span className="float-right">
-                    <i className="fa fa-trash" id={this.props.module.id} onClick={()=>{this.props.delete(this.props.module.id)}}></i>
+                    <span className="float-right">
+                    <i className="fa fa-times" id={this.props.module.id} onClick={()=>{this.props.delete(this.props.module.id)}}></i>
                     </span>
 
-            </li>
+                </a>
+
+
+            </div>
+
+
+
 
 
         )
