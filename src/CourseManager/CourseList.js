@@ -102,7 +102,7 @@ import $ from 'jquery';
                      <table >
                          <tr>
                                 <td width="5%">
-                                    <i className="fa fa-bars"></i>
+                                    <i className="fa fa-home"></i>
                                 </td>
                              <td width="11%">
                                  CourseManager

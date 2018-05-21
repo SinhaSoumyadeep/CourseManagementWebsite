@@ -1,5 +1,6 @@
 let _singleton = Symbol();
 const MODULE_API_URL = 'http://localhost:8080/api/course/CID/module/MID';
+const deleteUrl = 'http://localhost:8080/api/lesson/LID';
 
 
 
@@ -17,6 +18,32 @@ export default class LessonService {
 
 
     }
+
+    createLessonForModule(courseId, moduleId, lesson) {
+
+        var fetchLessonUrl =  MODULE_API_URL.replace('CID',courseId).replace('MID',moduleId);
+        return fetch(fetchLessonUrl,
+            {   body: JSON.stringify(lesson),
+                headers: { 'Content-Type': 'application/json' },
+                method: 'POST'
+            }).then(function (response)
+        { return response.json(); })
+    }
+
+    deleteLesson(lessonid) {
+
+        return fetch(deleteUrl.replace('LID', lessonid),
+            {
+                body: JSON.stringify({id: lessonid}),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'DELETE'
+            }
+        )
+
+    }
+
 
 
 

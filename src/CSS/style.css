@@ -96,3 +96,14 @@ a {text-decoration: none; }
     border-radius: 3.3rem;
     outline: 0;
 }
+
+.modal3
+{
+    overflow: auto;
+    padding-right: 727px;
+
+
+}
+.modal5{
+z-index: auto;
+}

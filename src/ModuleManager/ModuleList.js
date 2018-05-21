@@ -110,7 +110,10 @@ export default class ModuleList extends React.Component {
                         <table >
                             <tr>
                                 <td width="5%">
-                                    <i className="fa fa-bars"></i>
+                                    <a href="http://localhost:3000/courses">
+                                    <i className="fa fa-home"></i>
+                                    </a>
+
                                 </td>
                                 <td width="11%">
                                     Course Id {this.state.courseId}
@@ -169,6 +172,9 @@ export default class ModuleList extends React.Component {
                         </tbody>
                     </table>
                     </div>
+
+
+
 
                 </div>
 
