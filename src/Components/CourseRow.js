@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import logo from '../Images/logo.jpg'
 
 
 
@@ -36,9 +36,15 @@ export default class CourseRow extends React.Component
     courseRows() {
 
         var id = this.props.course.id;
+        var createdDate = this.props.course.created;
+        var cd= String(createdDate).substring(0,10)
         var navurl = "/course/".concat(id);
 
         return (
+
+
+
+
 
 
 
@@ -48,8 +54,13 @@ export default class CourseRow extends React.Component
                 <a  className="list-group-item list-group-item-action">
 
                     <Link to={`/course/${this.props.course.id}`} style={{textDecoration: "none"}}>
-                        <i className="fa fa-folder"></i>
-                        <span id="courseTitle"> {this.props.course.title}</span>
+
+                            <div id="courseFolder" style={{display: "inline-block"}}><i className="fa fa-folder"></i></div>
+                            <div id="courseTitle" style={{display: "inline-block"}}> {this.props.course.title}</div>
+                            <div id="courseOwner" style={{display: "inline-block"}}> {this.props.course.owner}</div>
+                            <div id="courseCreated" style={{display: "inline-block"}}> {cd}</div>
+
+
 
 
                     </Link>
@@ -88,11 +99,6 @@ export default class CourseRow extends React.Component
                 </div>
 
             </div>
-
-
-
-
-
 
 
 

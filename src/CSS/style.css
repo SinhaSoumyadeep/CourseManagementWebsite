@@ -9,7 +9,7 @@ body {
     overflow: hidden;
     background-color: #4b9ee5;
     top: 0px;
-    width: 100%;
+    width: 1250px;
     color: white;
     position: fixed;
     z-index: 10;
@@ -34,11 +34,34 @@ body {
 }
 
 #courseTitle{
-    margin-left: 20px;
+    width: 30%;
     font-size: small;
 
 
 }
+
+#courseFolder{
+    width: 5%;
+    font-size: small;
+
+
+}
+
+#courseOwner{
+
+    width: 30%;
+    font-size: small;
+
+}
+
+#courseCreated{
+
+    width: 30%;
+    font-size: small;
+
+}
+
+
 
 .fa-folder{
 
@@ -52,6 +75,11 @@ body {
 .fa-check{
 
     color: green;
+    cursor: pointer;
+}
+
+.fa-th
+{
     cursor: pointer;
 }
 

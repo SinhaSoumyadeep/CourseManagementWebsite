@@ -1,10 +1,29 @@
 import React from 'react'
 import CourseRow from "./CourseRow";
-import  CourseService from "../CourseService/CourseService"
+import  CourseService from "../Service/CourseService"
 import '../CSS/style.css'
 import '../JS/modal.css'
 import $ from 'jquery';
+import CourseGrid from "./CourseGrid";
 
+
+$(document).on("click","#toggleView",function () {
+
+
+
+    if($('.dispGrid').css('display') == 'none')
+    {
+        $('.dispGrid').css('display','')
+        $('.dispRow').css('display','none')
+    }
+    else
+    {
+        $('.dispRow').css('display','')
+        $('.dispGrid').css('display','none')
+    }
+
+
+})
 
 
  export default class CourseList extends React.Component
@@ -20,7 +39,9 @@ import $ from 'jquery';
          this.deleteCourse = this.deleteCourse.bind(this);
          this.courseService = CourseService.instance;
          this.state = {
+
              courses: []
+
          };
      }
 
@@ -28,6 +49,10 @@ import $ from 'jquery';
 
             this.findAllCourses()
      }
+
+
+
+
 
 
 
@@ -66,11 +91,25 @@ import $ from 'jquery';
          )
      }
 
+     courseGrid() {
+         var grid = this.state.courses.map((course) => {
+             return ( <CourseGrid delete={this.deleteCourse} course={course} key={course.id} />)
+
+         });
+         return (
+             grid
+         )
+     }
+
 
      addCourse(event) {
-         this.setState({
-             course: { title: event.target.value }
-         });
+
+
+                this.setState({
+                    course: { title: event.target.value }
+                });
+
+
 
      }
 
@@ -81,11 +120,31 @@ import $ from 'jquery';
 
 
      createModule() {
-         this.courseService
-             .createCourse(this.state.course)
-             .then(() => { this.findAllCourses(); });
+
+
+            var crse = this.refs.courseInput.value;
+
+            if(crse!=''){
+
+                this.courseService
+                    .createCourse(this.state.course)
+                    .then(() => { this.findAllCourses(); });
+            }
+            else {
+
+                var courseObj = {title: "DefaultCourse"};
+
+                this.courseService
+                    .createCourse(courseObj)
+                    .then(() => { this.findAllCourses(); });
+            }
+
+
 
      }
+
+
+
 
 
 
@@ -109,7 +168,7 @@ import $ from 'jquery';
                              </td>
                              <td width="65%">
 
-                                 <input className="form-control" placeholder="Course" onChange={this.addCourse} value={this.state.courses.title}/>
+                                 <input className="form-control" ref="courseInput" placeholder="Course" onChange={this.addCourse} value={this.state.courses.title}/>
                              </td>
                              <td width="11%">
 
@@ -125,20 +184,18 @@ import $ from 'jquery';
                      </table>
                  </div>
 
-                 <div className="navbartitle">
-                     <table >
-                         <tr>
-                             <td width="7%">
-
-                             </td>
-                             <td width="11%">
-                                 Title
-                             </td>
-
-                         </tr>
+                 <div className="navbartitle" style={{paddingLeft: "45px"}}>
+                     <div id="courseFolder" style={{display: "inline-block"}}></div>
+                     <div id="courseTitle" style={{display: "inline-block"}}>Title</div>
+                     <div id="courseOwner" style={{display: "inline-block"}}>Owner</div>
+                     <div id="courseCreated" style={{display: "inline-block"}}>Created</div>
+                     <div id="" style={{display: "inline-block"}} >
 
 
-                     </table>
+                         <button className="btn btn-outline-dark btn-block" id="toggleView">
+                             <i className="fa fa-th"></i>
+                         </button>
+                     </div>
                  </div>
 
 
@@ -147,7 +204,7 @@ import $ from 'jquery';
 
 
                          <tbody>
-                         <tr>
+                         <tr className="dispRow">
 
                              <td >
                                  <ul id="sortable">
@@ -156,6 +213,20 @@ import $ from 'jquery';
 
                                  </ul>
                              </td>
+
+
+                         </tr>
+
+                         <tr className="dispGrid" style={{display: "none"}}>
+
+                             <td>
+                                 <div className="row">
+                                     <div className="card-deck" style={{margin: "0px"}}>
+                                    {this.courseGrid()}
+                                     </div>
+                                 </div>
+                             </td>
+
 
                          </tr>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../Images/lesson.png'
 import LessonRow from "./LessonRow";
-import LessonService from "../CourseService/LessonService";
+import LessonService from "../Service/LessonService";
 
 
 

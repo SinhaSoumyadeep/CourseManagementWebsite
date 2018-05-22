@@ -1,6 +1,6 @@
 import React from 'react'
-import ModuleList from '../ModuleManager/ModuleList'
-import LessonList from "./LessonList";
+import ModuleList from '../Components/ModuleList'
+import LessonList from "../Components/LessonList";
 
 
 export default class CourseEditor extends React.Component {

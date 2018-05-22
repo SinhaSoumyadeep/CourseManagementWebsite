@@ -1,7 +1,7 @@
 import React from 'react';
-import ModuleEditor from '../CourseManager/ModuleEditor';
-import ModuleService from '../CourseService/ModuleService';
-import ModuleRow from "../CourseManager/ModuleRow";
+import ModuleEditor from './ModuleEditor';
+import ModuleService from '../Service/ModuleService';
+import ModuleRow from "./ModuleRow";
 import $ from 'jquery'
 
 
@@ -89,8 +89,23 @@ export default class ModuleList extends React.Component {
     }
 
     createModule() {
-        this.moduleService.createModule(this.state.courseId, this.state.module)
-            .then(() => { this.findAllModules(this.state.courseId) });
+
+        var modValIn = this.refs.moduleInput.value;
+
+        if(modValIn!='')
+        {
+            this.moduleService.createModule(this.state.courseId, this.state.module)
+                .then(() => { this.findAllModules(this.state.courseId) });
+        }
+        else {
+
+            var moduleObj = {title: "DefaultModule"};
+
+            this.moduleService.createModule(this.state.courseId, moduleObj)
+                .then(() => { this.findAllModules(this.state.courseId) });
+        }
+
+
     }
 
 
@@ -122,7 +137,7 @@ export default class ModuleList extends React.Component {
                                 </td>
                                 <td width="65%">
 
-                                    <input className="form-control" placeholder="Module" onChange={this.setModuleTitle}/>
+                                    <input className="form-control" ref="moduleInput" placeholder="Module" onChange={this.setModuleTitle}/>
                                 </td>
                                 <td width="11%">
 
@@ -138,20 +153,11 @@ export default class ModuleList extends React.Component {
                         </table>
                     </div>
 
-                    <div className="navbartitle">
-                        <table >
-                            <tr>
-                                <td width="7%">
-
-                                </td>
-                                <td width="11%">
-                                    Title
-                                </td>
-
-                            </tr>
-
-
-                        </table>
+                    <div className="navbartitle" style={{paddingLeft: "45px"}}>
+                        <div id="courseFolder" style={{display: "inline-block"}}></div>
+                        <div id="courseTitle" style={{display: "inline-block"}}>Title</div>
+                        <div id="courseOwner" style={{display: "inline-block"}}>Owner</div>
+                        <div id="courseCreated" style={{display: "inline-block"}}>Created</div>
                     </div>
 
 

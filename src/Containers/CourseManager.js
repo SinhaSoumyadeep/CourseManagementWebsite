@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import CourseList from './CourseList';
+import CourseList from '../Components/CourseList';
 import CourseEditor from './CourseEditor'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import LessonList from "./LessonList";
+import LessonList from "../Components/LessonList";
 
 
 
@@ -14,10 +14,11 @@ export default class CourseManager
 
 
 
+
     render() {
         return (
             <Router>
-                <div>
+                <div >
 
                     <Route path="/courses"
                            component={CourseList}>
