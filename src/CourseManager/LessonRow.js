@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../Images/lesson.png'
+import logo from '../Images/logo.jpg'
 
 
 export default class LessonRow extends React.Component {
@@ -39,31 +39,31 @@ export default class LessonRow extends React.Component {
                     <div className="col-sm-3">
 
 
+
                         <div className="card " >
                             <img className="card-img-top" src={logo} style={{height: "12px;"}}/>
                             <div className="card-body">
-                                <h5 className="card-title">
+
+                                <h5 className="card-title" style={{textAlign: "center"}}>
                                     {this.props.lesson.title}
-                                </h5>
-                                <p className="card-text">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                </p>
-                                <a href="#" className="btn btn-primary">
-                                    More...
-                                </a>
-
-                                <button  className="btn btn-danger" onClick={()=>{this.abc(this.props.lesson.id)}}>
-                                    Delete
+                                    <span className="float-right">
+                                <button  className="btn btn-primary" >
+                                    <i className="fa fa-ellipsis-h"></i>
                                 </button>
+                                        &nbsp;
+                                        <button  className="btn btn-danger" onClick={()=>{this.abc(this.props.lesson.id)}}>
+                                    <i className="fa fa-minus"></i>
+                                </button>
+                                                </span>
+                                </h5>
 
-                                {/*<button  className="btn btn-danger" onClick={()=> {this.props.delete(this.props.lesson.id)}}>
-                                    Delete
-                                </button>*/}
+
 
                             </div>
 
 
                         </div>
+
 
                         <div className="modal5" id={"myModal"+this.props.lesson.id} style={{display: "none", zIndex: "78", width: "100%"}}>
                             <div className="modal-dialog">

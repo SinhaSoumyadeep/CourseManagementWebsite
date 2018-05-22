@@ -47,7 +47,7 @@ export default class CourseRow extends React.Component
 
                 <a  className="list-group-item list-group-item-action">
 
-                    <Link to={`/course/${this.props.course.id}`}>
+                    <Link to={`/course/${this.props.course.id}`} style={{textDecoration: "none"}}>
                         <i className="fa fa-folder"></i>
                         <span id="courseTitle"> {this.props.course.title}</span>
 

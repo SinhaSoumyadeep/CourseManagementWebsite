@@ -126,7 +126,7 @@ export default class LessonList extends React.Component {
 
                         <div className="modal3" id={"myModallesson"} style={{ display: "none",position: "fixed", zIndex: "45", width: "100%"}}>
                             <div className="modal-dialog">
-                                <div className="modal-content" style={{height:"233px"}}>
+                                <div className="modal-content" style={{height:"233px",marginTop: "36px"}}>
 
 
                                     <div class="modal-header">
@@ -155,7 +155,7 @@ export default class LessonList extends React.Component {
 
                         <div className="lessonButton" style={{ position:"fixed", zIndex: "45", float: "right"}}>
                             <button className="btn btn-danger btn-block" onClick={()=>{this.abc()}}>
-                                <i className="fa fa-plus" ></i>
+                                <i className="fa fa-plus" ></i>Lesson
                             </button>
                         </div>
 

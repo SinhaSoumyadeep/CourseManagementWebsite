@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe769458-f81f-4fe8-9902-b585de08cd6f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CSS/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/CSS/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CourseManager/CourseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CourseManager/CourseList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CourseManager/CourseRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CourseManager/CourseRow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CourseManager/LessonList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CourseManager/LessonList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CourseManager/LessonRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CourseManager/LessonRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CourseService/LessonService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CourseService/LessonService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CourseManager/ModuleRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CourseManager/ModuleRow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ModuleManager/ModuleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModuleManager/ModuleList.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,70 +24,10 @@
       <file leaf-file-name="LessonList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CourseManager/LessonList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="112" column="13" lean-forward="true" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+            <state relative-caret-position="1920">
+              <caret line="128" column="102" selection-start-line="128" selection-start-column="102" selection-end-line="128" selection-end-column="102" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CourseEditor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CourseManager/CourseEditor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CourseManager.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CourseManager/CourseManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModuleList.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ModuleManager/ModuleList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="112" column="75" selection-start-line="112" selection-start-column="75" selection-end-line="112" selection-end-column="75" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LessonRow.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CourseManager/LessonRow.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModuleRow.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CourseManager/ModuleRow.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="71" column="112" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="112" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,19 +36,19 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CSS/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1455">
-              <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+            <state relative-caret-position="495">
+              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CourseRow.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CourseManager/CourseRow.js">
+      <file leaf-file-name="LessonRow.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CourseManager/LessonRow.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-69">
-              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state relative-caret-position="840">
+              <caret line="56" column="55" selection-start-line="56" selection-start-column="55" selection-end-line="56" selection-end-column="55" />
               <folding>
-                <element signature="e#1#26#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,15 +86,15 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/CourseManager/CourseManager.js" />
         <option value="$PROJECT_DIR$/src/CourseManager/Modal.js" />
-        <option value="$PROJECT_DIR$/src/CourseManager/ModuleRow.js" />
         <option value="$PROJECT_DIR$/src/CourseService/LessonService.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/CourseManager/CourseList.js" />
+        <option value="$PROJECT_DIR$/src/ModuleManager/ModuleList.js" />
         <option value="$PROJECT_DIR$/src/CourseManager/LessonList.js" />
+        <option value="$PROJECT_DIR$/src/CourseManager/ModuleRow.js" />
         <option value="$PROJECT_DIR$/src/CourseManager/CourseRow.js" />
         <option value="$PROJECT_DIR$/src/CSS/style.css" />
         <option value="$PROJECT_DIR$/src/CourseManager/LessonRow.js" />
-        <option value="$PROJECT_DIR$/src/ModuleManager/ModuleList.js" />
       </list>
     </option>
   </component>
@@ -176,7 +114,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="717" />
@@ -227,6 +165,12 @@
               <item name="my-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ModuleManager" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -266,12 +210,12 @@
       <workItem from="1526428912118" duration="3152000" />
       <workItem from="1526485037194" duration="83014000" />
       <workItem from="1526831393978" duration="31873000" />
-      <workItem from="1526914294040" duration="1013000" />
+      <workItem from="1526914294040" duration="15223000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119052000" />
+    <option name="totallyTimeSpent" value="133262000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="717" extended-state="0" />
@@ -513,16 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CourseManager/Modal.js" />
     <entry file="file://$PROJECT_DIR$/src/CourseService/ModuleService.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -555,37 +489,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CSS/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CourseManager/ModuleEditor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CourseManager/CourseManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CourseManager/CourseRow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-69">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#1#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,40 +506,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CourseManager/LessonList.js">
+    <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="112" column="13" lean-forward="true" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CourseManager/CourseManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CourseManager/ModuleRow.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="71" column="112" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="112" />
+        <state relative-caret-position="116">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CourseManager/LessonRow.js">
+    <entry file="file://$PROJECT_DIR$/src/CourseManager/CourseRow.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="735">
+          <caret line="49" column="97" selection-start-line="49" selection-start-column="97" selection-end-line="49" selection-end-column="97" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#1#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ModuleManager/ModuleList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="112" column="75" selection-start-line="112" selection-start-column="75" selection-end-line="112" selection-end-column="75" />
+        <state relative-caret-position="908">
+          <caret line="164" column="53" lean-forward="true" selection-start-line="164" selection-start-column="53" selection-end-line="164" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CSS/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CourseManager/LessonList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1920">
+          <caret line="128" column="102" selection-start-line="128" selection-start-column="102" selection-end-line="128" selection-end-column="102" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CourseManager/LessonRow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="56" column="55" selection-start-line="56" selection-start-column="55" selection-end-line="56" selection-end-column="55" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -34,6 +34,8 @@ export default class ModuleList extends React.Component {
         this.moduleService
             .deleteCourse(id).then(() => { this.findAllModules(this.state.courseId) });
 
+        window.location.replace("http://localhost:3000/course/"+this.state.courseId);
+
 
 
     }

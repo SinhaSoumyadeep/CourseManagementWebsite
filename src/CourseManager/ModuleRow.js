@@ -5,6 +5,9 @@ import $ from 'jquery'
 
 
 
+
+
+
 export default class ModuleRow extends React.Component
 {
 
@@ -17,6 +20,33 @@ export default class ModuleRow extends React.Component
 
 
     }
+
+    active(id)
+    {
+
+        $(".list-group-item-action").removeClass("active");
+        $(".fa-folder").css("color","");
+        $(".moduleLink").css("color","");
+
+        var classId = $("#moduleLink".concat(this.props.module.id)).attr('class')
+        if(classId.includes("active"))
+        {
+            $("#moduleLink".concat(this.props.module.id)).removeClass("active");
+            $("#folder".concat(this.props.module.id)).css("color","");
+            $("#moduleTitle".concat(this.props.module.id)).css("color","");
+        }
+        else
+        {
+            $("#moduleLink".concat(this.props.module.id)).addClass("active");
+            $("#folder".concat(this.props.module.id)).css("color","white");
+            $("#moduleTitle".concat(this.props.module.id)).css("color","white");
+
+        }
+
+
+    }
+
+
 
     abc(id)
     {
@@ -41,12 +71,12 @@ export default class ModuleRow extends React.Component
     ModuleRows() {
         return (
 
-            <div className="list-group">
-                <a  className="list-group-item list-group-item-action">
+            <div className="list-group" >
+                <a  className="list-group-item list-group-item-action"  id={"moduleLink"+this.props.module.id} >
 
-                    <Link to={`/course/${this.props.courseid}/module/${this.props.module.id}`}>
-                        <i className="fa fa-folder"></i>
-                        <span id="courseTitle"> {this.props.module.title}</span>
+                    <Link to={`/course/${this.props.courseid}/module/${this.props.module.id}`} onClick={()=>{this.active(this.props.module.id)}} style={{textDecoration: "none"}}>
+                        <i className="fa fa-folder" id={"folder"+this.props.module.id} ></i>
+                        <span className={"moduleLink"} id={"moduleTitle"+this.props.module.id} style={{marginLeft: "21px",fontSize : "small"}}> {this.props.module.title}</span>
                     </Link>
 
 
