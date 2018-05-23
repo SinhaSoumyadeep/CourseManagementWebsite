@@ -59,9 +59,24 @@ export default class LessonList extends React.Component {
 
         if(courseid!=''&&moduleid!='')
         {
-            this.lessonService.createLessonForModule(courseid,moduleid,this.state.lesson)
-                .then(() => { this.findAllLessons() });
+
+            if(this.refs.lessonInputRef.value!=''){
+
+                this.lessonService.createLessonForModule(courseid,moduleid,this.state.lesson)
+                    .then(() => { this.findAllLessons() });
+
+            }
+            else {
+
+                var lessonObj = {title: "DefaultLesson"}
+                this.lessonService.createLessonForModule(courseid,moduleid,lessonObj)
+                    .then(() => { this.findAllLessons() });
+
+            }
+
         }
+
+        this.refs.lessonInputRef.value = '';
 
         this.abc();
 
@@ -126,7 +141,7 @@ export default class LessonList extends React.Component {
 
                         <div className="modal3" id={"myModallesson"} style={{ display: "none",position: "fixed", zIndex: "45", width: "100%"}}>
                             <div className="modal-dialog">
-                                <div className="modal-content" style={{height:"233px",marginTop: "36px"}}>
+                                <div className="modal-content" style={{height:"233px",marginTop: "45px"}}>
 
 
                                     <div class="modal-header">
@@ -136,7 +151,7 @@ export default class LessonList extends React.Component {
 
 
                                     <div class="modal-body">
-                                        <input className="form-control" placeholder="Lesson" onChange={this.setLessonTitle}/>
+                                        <input className="form-control" placeholder="Lesson"  ref="lessonInputRef" onChange={this.setLessonTitle}/>
                                     </div>
 
 

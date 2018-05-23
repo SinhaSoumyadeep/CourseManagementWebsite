@@ -104,6 +104,7 @@ export default class ModuleList extends React.Component {
             this.moduleService.createModule(this.state.courseId, moduleObj)
                 .then(() => { this.findAllModules(this.state.courseId) });
         }
+        this.refs.moduleInput.value='';
 
 
     }
@@ -124,34 +125,30 @@ export default class ModuleList extends React.Component {
 
 
                     <div className="navbar">
-                        <table >
-                            <tr>
-                                <td width="5%">
-                                    <a href="http://localhost:3000/courses">
-                                    <i className="fa fa-home"></i>
-                                    </a>
+                        <div id ="home">
+                            <a href="http://localhost:3000/courses">
+                                <i className="fa fa-home"></i>
+                            </a>
+                        </div>
+                        <div id="text">
+                            <h6>Module</h6>
+                        </div>
+                        <div id="inputFld">
+                            <input className="form-control" ref="moduleInput" placeholder="Module" onChange={this.setModuleTitle}/>
+                        </div>
+                        <div id="btnFld">
+                            <button className="btn btn-danger btn-block" onClick={this.createModule}>
+                                <i className="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <div id="extra">
 
-                                </td>
-                                <td width="11%">
-                                    Course Id {this.state.courseId}
-                                </td>
-                                <td width="65%">
+                        </div>
 
-                                    <input className="form-control" ref="moduleInput" placeholder="Module" onChange={this.setModuleTitle}/>
-                                </td>
-                                <td width="11%">
-
-                                    <button className="btn btn-danger btn-block" onClick={this.createModule}>
-                                        <i className="fa fa-plus"></i>
-                                    </button>
-                                </td>
-
-
-                            </tr>
-
-
-                        </table>
                     </div>
+
+
+
 
                     <div className="navbartitle" style={{paddingLeft: "45px"}}>
                         <div id="courseFolder" style={{display: "inline-block"}}></div>
@@ -163,22 +160,12 @@ export default class ModuleList extends React.Component {
 
 
                     <div className="main">
-                    <table className="table">
-
-
-                        <tbody>
-                        <tr >
-                            <td className="moduleRow">
+                        <div className="moduleRow">
                                 <ul id="sortable">
-                                {this.moduleRows()}
+                                    {this.moduleRows()}
                                 </ul>
-                            </td>
-                        </tr>
+                        </div>
 
-
-
-                        </tbody>
-                    </table>
                     </div>
 
 

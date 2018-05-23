@@ -19,7 +19,7 @@ export default class CourseManager
     render() {
         return (
             <Router>
-                <div >
+                <div>
 
                     <Route path="/courses"
                            component={CourseList}>

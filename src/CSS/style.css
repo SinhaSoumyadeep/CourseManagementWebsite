@@ -9,10 +9,11 @@ body {
     overflow: hidden;
     background-color: #4b9ee5;
     top: 0px;
-    width: 1250px;
+    width: 100%;
     color: white;
-    position: fixed;
+    position: sticky;
     z-index: 10;
+    display: inline-block;
 }
 
 .titlebar {
@@ -84,19 +85,23 @@ body {
 }
 
 .navbartitle {
-    margin-top: 65px;
-    top: 5px;
+    padding-bottom: 21px;
+    padding-top: 21px;
+    top: 54px;
     width: 100%;
     color: #343d46;
+    background-color: #e2e2e2;
+    position: sticky;
+    z-index: 56;
+    border-bottom: 1px solid #aaa;
+    display: inline-block;
+
+
 }
 
 a {text-decoration: none; }
 
-.module
-{
-    margin-top: 13px;
 
-}
 
 .card
 {
@@ -152,4 +157,38 @@ z-index: auto;
 
 }
 
+
+
+#searchBar
+{
+    border-radius: 15px;
+}
+
+#home
+{
+    margin-top: 7px;
+    width: 50px;
+    float: left;
+}
+#text
+{
+    float: left;
+    width: 120px;
+    overflow: hidden;
+    margin-right: 145px;
+}
+#inputFld{
+    float: left;
+    width: 451px;
+}
+#btnFld{
+    float: left;
+    width: 45px;
+    margin-right: 230px;
+}
+#extra{
+    float: left;
+    width: 169px;
+
+}
 

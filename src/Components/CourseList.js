@@ -38,6 +38,7 @@ $(document).on("click","#toggleView",function () {
 
      constructor() {
          super()
+         this.Search = this.Search.bind(this);
          this.addCourse = this.addCourse.bind(this);
          this.createModule = this.createModule.bind(this);
          this.deleteCourse = this.deleteCourse.bind(this);
@@ -87,7 +88,7 @@ $(document).on("click","#toggleView",function () {
 
 
      courseRows() {
-         
+
          todayCount=0;
          yesterdayCount=0;
          weekCount =0;
@@ -257,14 +258,15 @@ $(document).on("click","#toggleView",function () {
                     .createCourse(courseObj)
                     .then(() => { this.findAllCourses(); });
             }
+         this.refs.courseInput.value='';
 
 
 
      }
 
-     Search()
+     Search(event)
      {
-        var key = this.refs.courseInput.value
+        var key = event.target.value
 
 
          this.courseService.findByCourseName(key).then((courses) => {
@@ -279,36 +281,6 @@ $(document).on("click","#toggleView",function () {
 
 
      }
-     /*renderCourses(courses)
-     {
-
-         console.log(courses)
-         var i;
-         for (i = 0; i < courses.length; i++) {
-             var $row = $('<tr  id="trow['+courses[i].id+']">'+
-                 '<td id="crstitle['+courses[i].id+']">'+courses[i].title+'</td>'+
-                 '<td id="crsowner['+courses[i].id+']">'+courses[i].owner+'</td>'+
-                 '<td id="crscreated['+courses[i].id+']">'+courses[i].created+'</td>'+
-                 '</tr>');
-
-             $('table> tbody:last').append($row);
-         }
-
-
-
-
-
-
-     }*/
-
-
-
-
-
-
-
-
-
 
 
 
@@ -320,33 +292,29 @@ $(document).on("click","#toggleView",function () {
 
              <div>
                  <div className="navbar">
-                     <table >
-                         <tr>
-                                <td width="5%">
-                                    <i className="fa fa-home"></i>
-                                </td>
-                             <td width="11%">
-                                 CourseManager
-                             </td>
-                             <td width="65%">
+                     <div id ="home">
+                         <i className="fa fa-home"></i>
+                     </div>
+                     <div id="text">
+                            <h6>CourseManager</h6>
+                     </div>
+                     <div id="inputFld">
+                         <input className="form-control" ref="courseInput" placeholder="Course" onChange={this.addCourse} value={this.state.courses.title}/>
+                     </div>
+                     <div id="btnFld">
+                         <button className="btn btn-danger btn-block" onClick={this.createModule}>
+                             <i className="fa fa-plus"></i>
+                         </button>
+                     </div>
+                     <div id="extra">
+                         <input className="form-control"  id="searchBar" name="search" placeholder="Search..." onChange={this.Search}/>
+                     </div>
 
-                                 <input className="form-control" ref="courseInput" placeholder="Course" onChange={this.addCourse} value={this.state.courses.title}/>
-                             </td>
-                             <td width="11%">
-
-                                 <button className="btn btn-danger btn-block" onClick={this.createModule}>
-                                     <i className="fa fa-plus"></i>
-                                 </button>
-                             </td>
-
-
-                         </tr>
-
-
-                     </table>
                  </div>
 
-                 <div className="navbartitle" style={{paddingLeft: "45px"}}>
+
+
+                 <div className="navbartitle" style={{paddingLeft: "45px",paddingTop: "14px",paddingBottom: "15px"}}>
                      <div id="courseFolder" style={{display: "inline-block"}}></div>
                      <div id="courseTitle" style={{display: "inline-block"}}>Title</div>
                      <div id="courseOwner" style={{display: "inline-block"}}>Owner</div>
@@ -362,45 +330,25 @@ $(document).on("click","#toggleView",function () {
 
 
                  <div className="main">
-                     <table className="table" id="courseTable">
+                     <div className="dispRow">
 
+                         <ul id="sortable">
+                             {this.courseRows()}
+                         </ul>
 
-                         <tbody>
-                         <tr className="dispRow">
+                     </div>
+                     <div className="dispGrid" style={{display: "none"}}>
+                         <div className="row">
+                             <div className="card-deck" style={{margin: "0px"}}>
+                                 {this.courseGrid()}
+                             </div>
+                         </div>
 
-                             <td >
-                                 <ul id="sortable">
-                                 {this.courseRows()}
-
-
-                                 </ul>
-                             </td>
-
-
-                         </tr>
-
-                         <tr className="dispGrid" style={{display: "none"}}>
-
-                             <td>
-                                 <div className="row">
-                                     <div className="card-deck" style={{margin: "0px"}}>
-                                    {this.courseGrid()}
-                                     </div>
-                                 </div>
-                             </td>
-
-
-                         </tr>
-
-
-
-                         </tbody>
-                     </table>
+                     </div>
                  </div>
 
-                 <button className="btn btn-outline-dark btn-block" id={"search"} onClick={()=>this.Search()} >
-                     <i className="fa fa-search"></i>
-                 </button>
+
+
 
 
 

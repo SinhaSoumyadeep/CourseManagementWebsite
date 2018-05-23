@@ -105,36 +105,29 @@ export default class TopicList extends React.Component {
 
         return (
 
-            <div className="container-fluid" >
+            <div>
 
-                <div className="navbar" style={{width: "1235px"}}>
-                    <table >
-                        <tr>
-                            <td width="10%">
-                                <a href="http://localhost:3000/courses">
-                                    <i className="fa fa-home"></i>
-                                </a>
+                <div className="navbar">
+                    <div id ="home">
+                        <a href="http://localhost:3000/courses">
+                            <i className="fa fa-home"></i>
+                        </a>
+                    </div>
+                    <div id="text">
+                        <h6>Topics</h6>
+                    </div>
+                    <div id="inputFld">
+                        <input className="form-control" ref="topicInput" placeholder="Topics"/>
+                    </div>
+                    <div id="btnFld">
+                        <button className="btn btn-danger btn-block" onClick={this.createTopic}>
+                            <i className="fa fa-plus" ></i>
+                        </button>
+                    </div>
+                    <div id="extra">
 
-                            </td>
-                            <td width="25%">
-                                Topics
-                            </td>
-                            <td width="60%">
+                    </div>
 
-                                <input className="form-control" ref="topicInput" placeholder="Topics"/>
-                            </td>
-                            <td width="5%">
-
-                                <button className="btn btn-danger btn-block" onClick={this.createTopic}>
-                                    <i className="fa fa-plus" ></i>
-                                </button>
-                            </td>
-
-
-                        </tr>
-
-
-                    </table>
                 </div>
 
 
