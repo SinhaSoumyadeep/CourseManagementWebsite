@@ -42,7 +42,7 @@ export default class CourseGrid extends React.Component
 
 
 
-            <div className="col-sm-3">
+            <div >
 
 
 

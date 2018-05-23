@@ -10,7 +10,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
-  - [npm test](#npm-test)
+  - [npm testMod](#npm-testMod)
   - [npm run build](#npm-run-build)
   - [npm run eject](#npm-run-eject)
 - [Supported Browsers](#supported-browsers)
@@ -60,7 +60,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
   - [Writing Tests](#writing-tests)
   - [Testing Components](#testing-components)
   - [Using Third Party Assertion Libraries](#using-third-party-assertion-libraries)
-  - [Initializing Test Environment](#initializing-test-environment)
+  - [Initializing Test Environment](#initializing-testMod-environment)
   - [Focusing and Excluding Tests](#focusing-and-excluding-tests)
   - [Coverage Reporting](#coverage-reporting)
   - [Continuous Integration](#continuous-integration)
@@ -95,7 +95,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Advanced Configuration](#advanced-configuration)
 - [Troubleshooting](#troubleshooting)
   - [`npm start` doesn’t detect changes](#npm-start-doesnt-detect-changes)
-  - [`npm test` hangs on macOS Sierra](#npm-test-hangs-on-macos-sierra)
+  - [`npm testMod` hangs on macOS Sierra](#npm-testMod-hangs-on-macos-sierra)
   - [`npm run build` exits too early](#npm-run-build-exits-too-early)
   - [`npm run build` fails on Heroku](#npm-run-build-fails-on-heroku)
   - [`npm run build` fails to minify](#npm-run-build-fails-to-minify)
@@ -139,7 +139,7 @@ my-app/
   src/
     App.css
     App.js
-    App.test.js
+    App.testModMod.js
     index.css
     index.js
     logo.svg
@@ -173,9 +173,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+### `npm testMod`
 
-Launches the test runner in the interactive watch mode.<br>
+Launches the testMod runner in the interactive watch mode.<br>
 See the section about [running tests](#running-tests) for more information.
 
 ### `npm run build`
@@ -571,7 +571,7 @@ Then in `package.json`, add the following lines to `scripts`:
 +    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
      "start": "react-scripts start",
      "build": "react-scripts build",
-     "test": "react-scripts test --env=jsdom",
+     "testMod": "react-scripts testMod --env=jsdom",
 ```
 
 >Note: To use a different preprocessor, replace `build-css` and `watch-css` commands according to your preprocessor’s documentation.
@@ -620,7 +620,7 @@ Then we can change `start` and `build` scripts to include the CSS preprocessor c
 +    "start": "npm-run-all -p watch-css start-js",
 +    "build-js": "react-scripts build",
 +    "build": "npm-run-all build-css build-js",
-     "test": "react-scripts test --env=jsdom",
+     "testMod": "react-scripts testMod --env=jsdom",
      "eject": "react-scripts eject"
    }
 ```
@@ -856,7 +856,7 @@ default you will have `NODE_ENV` defined for you, and any other environment vari
 These environment variables will be defined for you on `process.env`. For example, having an environment
 variable named `REACT_APP_SECRET_CODE` will be exposed in your JS as `process.env.REACT_APP_SECRET_CODE`.
 
-There is also a special built-in environment variable called `NODE_ENV`. You can read it from `process.env.NODE_ENV`. When you run `npm start`, it is always equal to `'development'`, when you run `npm test` it is always equal to `'test'`, and when you run `npm run build` to make a production bundle, it is always equal to `'production'`. **You cannot override `NODE_ENV` manually.** This prevents developers from accidentally deploying a slow development build to production.
+There is also a special built-in environment variable called `NODE_ENV`. You can read it from `process.env.NODE_ENV`. When you run `npm start`, it is always equal to `'development'`, when you run `npm testMod` it is always equal to `'testMod'`, and when you run `npm run build` to make a production bundle, it is always equal to `'production'`. **You cannot override `NODE_ENV` manually.** This prevents developers from accidentally deploying a slow development build to production.
 
 These environment variables can be useful for displaying information conditionally based on where the project is
 deployed or consuming sensitive data that lives outside of version control.
@@ -962,15 +962,15 @@ REACT_APP_SECRET_CODE=abcdef
 >Note: this feature is **available with `react-scripts@1.0.0` and higher**.
 
 * `.env`: Default.
-* `.env.local`: Local overrides. **This file is loaded for all environments except test.**
-* `.env.development`, `.env.test`, `.env.production`: Environment-specific settings.
-* `.env.development.local`, `.env.test.local`, `.env.production.local`: Local overrides of environment-specific settings.
+* `.env.local`: Local overrides. **This file is loaded for all environments except testMod.**
+* `.env.development`, `.env.testMod`, `.env.production`: Environment-specific settings.
+* `.env.development.local`, `.env.testMod.local`, `.env.production.local`: Local overrides of environment-specific settings.
 
 Files on the left have more priority than files on the right:
 
 * `npm start`: `.env.development.local`, `.env.development`, `.env.local`, `.env`
 * `npm run build`: `.env.production.local`, `.env.production`, `.env.local`, `.env`
-* `npm test`: `.env.test.local`, `.env.test`, `.env` (note `.env.local` is missing)
+* `npm testMod`: `.env.testMod.local`, `.env.testMod`, `.env` (note `.env.local` is missing)
 
 These variables will act as the defaults if the machine does not explicitly set them.<br>
 Please refer to the [dotenv documentation](https://github.com/motdotla/dotenv) for more details.
@@ -1167,11 +1167,11 @@ Matches are regular expressions, so that you can use a regexp to match multiple 
 
 When setting up a WebSocket proxy, there are a some extra considerations to be aware of.
 
-If you’re using a WebSocket engine like [Socket.io](https://socket.io/), you must have a Socket.io server running that you can use as the proxy target. Socket.io will not work with a standard WebSocket server. Specifically, don't expect Socket.io to work with [the websocket.org echo test](http://websocket.org/echo.html).
+If you’re using a WebSocket engine like [Socket.io](https://socket.io/), you must have a Socket.io server running that you can use as the proxy target. Socket.io will not work with a standard WebSocket server. Specifically, don't expect Socket.io to work with [the websocket.org echo testMod](http://websocket.org/echo.html).
 
 There’s some good documentation available for [setting up a Socket.io server](https://socket.io/docs/).
 
-Standard WebSockets **will** work with a standard WebSocket server as well as the websocket.org echo test. You can use libraries like [ws](https://github.com/websockets/ws) for the server, with [native WebSockets in the browser](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
+Standard WebSockets **will** work with a standard WebSocket server as well as the websocket.org echo testMod. You can use libraries like [ws](https://github.com/websockets/ws) for the server, with [native WebSockets in the browser](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
 
 Either way, you can proxy WebSocket requests manually in `package.json`:
 
@@ -1269,7 +1269,7 @@ Then, on the server, you can replace `__SERVER_DATA__` with a JSON of real data 
 >Note: this feature is available with `react-scripts@0.3.0` and higher.<br>
 >[Read the migration guide to learn how to enable it in older projects!](https://github.com/facebookincubator/create-react-app/blob/master/CHANGELOG.md#migrating-from-023-to-030)
 
-Create React App uses [Jest](https://facebook.github.io/jest/) as its test runner. To prepare for this integration, we did a [major revamp](https://facebook.github.io/jest/blog/2016/09/01/jest-15.html) of Jest so if you heard bad things about it years ago, give it another try.
+Create React App uses [Jest](https://facebook.github.io/jest/) as its testMod runner. To prepare for this integration, we did a [major revamp](https://facebook.github.io/jest/blog/2016/09/01/jest-15.html) of Jest so if you heard bad things about it years ago, give it another try.
 
 Jest is a Node-based runner. This means that the tests always run in a Node environment and not in a real browser. This lets us enable fast iteration speed and prevent flakiness.
 
@@ -1279,19 +1279,19 @@ We recommend that you use a separate tool for browser end-to-end tests if you ne
 
 ### Filename Conventions
 
-Jest will look for test files with any of the following popular naming conventions:
+Jest will look for testMod files with any of the following popular naming conventions:
 
 * Files with `.js` suffix in `__tests__` folders.
-* Files with `.test.js` suffix.
+* Files with `.TestMod.js.js` suffix.
 * Files with `.spec.js` suffix.
 
-The `.test.js` / `.spec.js` files (or the `__tests__` folders) can be located at any depth under the `src` top level folder.
+The `.testModMod.js` / `.spec.js` files (or the `__tests__` folders) can be located at any depth under the `src` top level folder.
 
-We recommend to put the test files (or `__tests__` folders) next to the code they are testing so that relative imports appear shorter. For example, if `App.test.js` and `App.js` are in the same folder, the test just needs to `import App from './App'` instead of a long relative path. Colocation also helps find tests more quickly in larger projects.
+We recommend to put the testMod files (or `__tests__` folders) next to the code they are testing so that relative imports appear shorter. For example, if `App.TestMod.js.js` and `App.js` are in the same folder, the testMod just needs to `import App from './App'` instead of a long relative path. Colocation also helps find tests more quickly in larger projects.
 
 ### Command Line Interface
 
-When you run `npm test`, Jest will launch in the watch mode. Every time you save a file, it will re-run the tests, just like `npm start` recompiles the code.
+When you run `npm testMod`, Jest will launch in the watch mode. Every time you save a file, it will re-run the tests, just like `npm start` recompiles the code.
 
 The watcher includes an interactive command-line interface with the ability to run all tests, or focus on a search pattern. It is designed this way so that you can keep it open and enjoy fast re-runs. You can learn the commands from the “Watch Usage” note that the watcher prints after every run:
 
@@ -1299,7 +1299,7 @@ The watcher includes an interactive command-line interface with the ability to r
 
 ### Version Control Integration
 
-By default, when you run `npm test`, Jest will only run the tests related to files changed since the last commit. This is an optimization designed to make your tests run fast regardless of how many tests you have. However it assumes that you don’t often commit the code that doesn’t pass the tests.
+By default, when you run `npm testMod`, Jest will only run the tests related to files changed since the last commit. This is an optimization designed to make your tests run fast regardless of how many tests you have. However it assumes that you don’t often commit the code that doesn’t pass the tests.
 
 Jest will always explicitly mention that it only ran tests related to the files changed since the last commit. You can also press `a` in the watch mode to force Jest to run all tests.
 
@@ -1307,9 +1307,9 @@ Jest will always run all tests on a [continuous integration](#continuous-integra
 
 ### Writing Tests
 
-To create tests, add `it()` (or `test()`) blocks with the name of the test and its code. You may optionally wrap them in `describe()` blocks for logical grouping but this is neither required nor recommended.
+To create tests, add `it()` (or `testMod()`) blocks with the name of the testMod and its code. You may optionally wrap them in `describe()` blocks for logical grouping but this is neither required nor recommended.
 
-Jest provides a built-in `expect()` global function for making assertions. A basic test could look like this:
+Jest provides a built-in `expect()` global function for making assertions. A basic testMod could look like this:
 
 ```js
 import sum from './sum';
@@ -1325,7 +1325,7 @@ You can also use [`jest.fn()` and `expect(fn).toBeCalled()`](https://facebook.gi
 
 ### Testing Components
 
-There is a broad spectrum of component testing techniques. They range from a “smoke test” verifying that a component renders without throwing, to shallow rendering and testing some of the output, to full rendering and testing component lifecycle and state changes.
+There is a broad spectrum of component testing techniques. They range from a “smoke testMod” verifying that a component renders without throwing, to shallow rendering and testing some of the output, to full rendering and testing component lifecycle and state changes.
 
 Different projects choose different testing tradeoffs based on how often components change, and how much logic they contain. If you haven’t decided on a testing strategy yet, we recommend that you start with creating simple smoke tests for your components:
 
@@ -1340,25 +1340,25 @@ it('renders without crashing', () => {
 });
 ```
 
-This test mounts a component and makes sure that it didn’t throw during rendering. Tests like this provide a lot of value with very little effort so they are great as a starting point, and this is the test you will find in `src/App.test.js`.
+This testMod mounts a component and makes sure that it didn’t throw during rendering. Tests like this provide a lot of value with very little effort so they are great as a starting point, and this is the testMod you will find in `src/App.testModMod.js`.
 
 When you encounter bugs caused by changing components, you will gain a deeper insight into which parts of them are worth testing in your application. This might be a good time to introduce more specific tests asserting specific expected output or behavior.
 
-If you’d like to test components in isolation from the child components they render, we recommend using [`shallow()` rendering API](http://airbnb.io/enzyme/docs/api/shallow.html) from [Enzyme](http://airbnb.io/enzyme/). To install it, run:
+If you’d like to testMod components in isolation from the child components they render, we recommend using [`shallow()` rendering API](http://airbnb.io/enzyme/docs/api/shallow.html) from [Enzyme](http://airbnb.io/enzyme/). To install it, run:
 
 ```sh
-npm install --save enzyme enzyme-adapter-react-16 react-test-renderer
+npm install --save enzyme enzyme-adapter-react-16 react-testMod-renderer
 ```
 
 Alternatively you may use `yarn`:
 
 ```sh
-yarn add enzyme enzyme-adapter-react-16 react-test-renderer
+yarn add enzyme enzyme-adapter-react-16 react-testMod-renderer
 ```
 
 As of Enzyme 3, you will need to install Enzyme along with an Adapter corresponding to the version of React you are using. (The examples above use the adapter for React 16.)
 
-The adapter will also need to be configured in your [global setup file](#initializing-test-environment):
+The adapter will also need to be configured in your [global setup file](#initializing-testMod-environment):
 
 #### `src/setupTests.js`
 ```js
@@ -1368,9 +1368,9 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 ```
 
->Note: Keep in mind that if you decide to "eject" before creating `src/setupTests.js`, the resulting `package.json` file won't contain any reference to it. [Read here](#initializing-test-environment) to learn how to add this after ejecting.
+>Note: Keep in mind that if you decide to "eject" before creating `src/setupTests.js`, the resulting `package.json` file won't contain any reference to it. [Read here](#initializing-testMod-environment) to learn how to add this after ejecting.
 
-Now you can write a smoke test with it:
+Now you can write a smoke testMod with it:
 
 ```js
 import React from 'react';
@@ -1382,7 +1382,7 @@ it('renders without crashing', () => {
 });
 ```
 
-Unlike the previous smoke test using `ReactDOM.render()`, this test only renders `<App>` and doesn’t go deeper. For example, even if `<App>` itself renders a `<Button>` that throws, this test will pass. Shallow rendering is great for isolated unit tests, but you may still want to create some full rendering tests to ensure the components integrate correctly. Enzyme supports [full rendering with `mount()`](http://airbnb.io/enzyme/docs/api/mount.html), and you can also use it for testing state changes and component lifecycle.
+Unlike the previous smoke testMod using `ReactDOM.render()`, this testMod only renders `<App>` and doesn’t go deeper. For example, even if `<App>` itself renders a `<Button>` that throws, this testMod will pass. Shallow rendering is great for isolated unit tests, but you may still want to create some full rendering tests to ensure the components integrate correctly. Enzyme supports [full rendering with `mount()`](http://airbnb.io/enzyme/docs/api/mount.html), and you can also use it for testing state changes and component lifecycle.
 
 You can read the [Enzyme documentation](http://airbnb.io/enzyme/) for more testing techniques. Enzyme documentation uses Chai and Sinon for assertions but you don’t have to use them because Jest provides built-in `expect()` and `jest.fn()` for spies.
 
@@ -1422,7 +1422,7 @@ Alternatively you may use `yarn`:
 yarn add jest-enzyme
 ```
 
-Import it in [`src/setupTests.js`](#initializing-test-environment) to make its matchers available in every test:
+Import it in [`src/setupTests.js`](#initializing-testMod-environment) to make its matchers available in every testMod:
 
 ```js
 import 'jest-enzyme';
@@ -1470,13 +1470,13 @@ global.localStorage = localStorageMock
 
 ### Focusing and Excluding Tests
 
-You can replace `it()` with `xit()` to temporarily exclude a test from being executed.<br>
-Similarly, `fit()` lets you focus on a specific test without running any other tests.
+You can replace `it()` with `xit()` to temporarily exclude a testMod from being executed.<br>
+Similarly, `fit()` lets you focus on a specific testMod without running any other tests.
 
 ### Coverage Reporting
 
 Jest has an integrated coverage reporter that works well with ES6 and requires no configuration.<br>
-Run `npm test -- --coverage` (note extra `--` in the middle) to include a coverage report like this:
+Run `npm testMod -- --coverage` (note extra `--` in the middle) to include a coverage report like this:
 
 ![coverage report](http://i.imgur.com/5bFhnTS.png)
 
@@ -1519,9 +1519,9 @@ Example package.json:
 
 ### Continuous Integration
 
-By default `npm test` runs the watcher with interactive CLI. However, you can force it to run tests once and finish the process by setting an environment variable called `CI`.
+By default `npm testMod` runs the watcher with interactive CLI. However, you can force it to run tests once and finish the process by setting an environment variable called `CI`.
 
-When creating a build of your application with `npm run build` linter warnings are not checked by default. Like `npm test`, you can force the build to perform a linter warning check by setting the environment variable `CI`. If any warnings are encountered then the build fails.
+When creating a build of your application with `npm run build` linter warnings are not checked by default. Like `npm testMod`, you can force the build to perform a linter warning check by setting the environment variable `CI`. If any warnings are encountered then the build fails.
 
 Popular CI servers already set the environment variable `CI` by default but you can do this yourself too:
 
@@ -1539,7 +1539,7 @@ cache:
     - node_modules
 script:
   - npm run build
-  - npm test
+  - npm testMod
 ```
 1. Trigger your first build with a git push.
 1. [Customize your Travis CI Build](https://docs.travis-ci.com/user/customizing-the-build/) if needed.
@@ -1552,7 +1552,7 @@ Follow [this article](https://medium.com/@knowbody/circleci-and-zeits-now-sh-c9b
 ##### Windows (cmd.exe)
 
 ```cmd
-set CI=true&&npm test
+set CI=true&&npm testMod
 ```
 
 ```cmd
@@ -1564,7 +1564,7 @@ set CI=true&&npm run build
 ##### Windows (Powershell)
 
 ```Powershell
-($env:CI = $true) -and (npm test)
+($env:CI = $true) -and (npm testMod)
 ```
 
 ```Powershell
@@ -1574,14 +1574,14 @@ set CI=true&&npm run build
 ##### Linux, macOS (Bash)
 
 ```bash
-CI=true npm test
+CI=true npm testMod
 ```
 
 ```bash
 CI=true npm run build
 ```
 
-The test command will force Jest to run tests once instead of launching the watcher.
+The testMod command will force Jest to run tests once instead of launching the watcher.
 
 >  If you find yourself doing this often in development, please [file an issue](https://github.com/facebookincubator/create-react-app/issues/new) to tell us about your use case because we want to make watcher the best experience and are open to changing how it works to accommodate more workflows.
 
@@ -1595,7 +1595,7 @@ By default, the `package.json` of the generated project looks like this:
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
+    "testMod": "react-scripts testMod --env=jsdom"
 ```
 
 If you know that none of your tests depend on [jsdom](https://github.com/tmpvar/jsdom), you can safely remove `--env=jsdom`, and your tests will run faster:
@@ -1604,20 +1604,20 @@ If you know that none of your tests depend on [jsdom](https://github.com/tmpvar/
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
--   "test": "react-scripts test --env=jsdom"
-+   "test": "react-scripts test"
+-   "testMod": "react-scripts testMod --env=jsdom"
++   "testMod": "react-scripts testMod"
 ```
 
 To help you make up your mind, here is a list of APIs that **need jsdom**:
 
 * Any browser globals like `window` and `document`
 * [`ReactDOM.render()`](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render)
-* [`TestUtils.renderIntoDocument()`](https://facebook.github.io/react/docs/test-utils.html#renderintodocument) ([a shortcut](https://github.com/facebook/react/blob/34761cf9a252964abfaab6faf74d473ad95d1f21/src/test/ReactTestUtils.js#L83-L91) for the above)
+* [`TestUtils.renderIntoDocument()`](https://facebook.github.io/react/docs/testMod-utils.html#renderintodocument) ([a shortcut](https://github.com/facebook/react/blob/34761cf9a252964abfaab6faf74d473ad95d1f21/src/testMod/ReactTestUtils.js#L83-L91) for the above)
 * [`mount()`](http://airbnb.io/enzyme/docs/api/mount.html) in [Enzyme](http://airbnb.io/enzyme/index.html)
 
 In contrast, **jsdom is not needed** for the following APIs:
 
-* [`TestUtils.createRenderer()`](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) (shallow rendering)
+* [`TestUtils.createRenderer()`](https://facebook.github.io/react/docs/testMod-utils.html#shallow-rendering) (shallow rendering)
 * [`shallow()`](http://airbnb.io/enzyme/docs/api/shallow.html) in [Enzyme](http://airbnb.io/enzyme/index.html)
 
 Finally, jsdom is also not needed for [snapshot testing](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html).
@@ -1628,7 +1628,7 @@ Snapshot testing is a feature of Jest that automatically generates text snapshot
 
 ### Editor Integration
 
-If you use [Visual Studio Code](https://code.visualstudio.com), there is a [Jest extension](https://github.com/orta/vscode-jest) which works with Create React App out of the box. This provides a lot of IDE-like features while using a text editor: showing the status of a test run with potential fail messages inline, starting and stopping the watcher automatically, and offering one-click snapshot updates.
+If you use [Visual Studio Code](https://code.visualstudio.com), there is a [Jest extension](https://github.com/orta/vscode-jest) which works with Create React App out of the box. This provides a lot of IDE-like features while using a text editor: showing the status of a testMod run with potential fail messages inline, starting and stopping the watcher automatically, and offering one-click snapshot updates.
 
 ![VS Code Jest Preview](https://cloud.githubusercontent.com/assets/49038/20795349/a032308a-b7c8-11e6-9b34-7eeac781003f.png)
 
@@ -1643,12 +1643,12 @@ There are various ways to setup a debugger for your Jest tests. We cover debuggi
 Add the following to the `scripts` section in your project's `package.json`
 ```json
 "scripts": {
-    "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
+    "testMod:debug": "react-scripts --inspect-brk testMod --runInBand --env=jsdom"
   }
 ```
-Place `debugger;` statements in any test and run:
+Place `debugger;` statements in any testMod and run:
 ```bash
-$ npm run test:debug
+$ npm run testMod:debug
 ```
 
 This will start running your Jest tests, but pause before executing to allow a debugger to attach to the process.
@@ -1658,9 +1658,9 @@ Open the following in Chrome
 about:inspect
 ```
 
-After opening that link, the Chrome Developer Tools will be displayed. Select `inspect` on your process and a breakpoint will be set at the first line of the react script (this is done simply to give you time to open the developer tools and to prevent Jest from executing before you have time to do so). Click the button that looks like a "play" button in the upper right hand side of the screen to continue execution. When Jest executes the test that contains the debugger statement, execution will pause and you can examine the current scope and call stack.
+After opening that link, the Chrome Developer Tools will be displayed. Select `inspect` on your process and a breakpoint will be set at the first line of the react script (this is done simply to give you time to open the developer tools and to prevent Jest from executing before you have time to do so). Click the button that looks like a "play" button in the upper right hand side of the screen to continue execution. When Jest executes the testMod that contains the debugger statement, execution will pause and you can examine the current scope and call stack.
 
->Note: the --runInBand cli option makes sure Jest runs test in the same process rather than spawning processes for individual tests. Normally Jest parallelizes test runs across processes but it is hard to debug many processes at the same time.
+>Note: the --runInBand cli option makes sure Jest runs testMod in the same process rather than spawning processes for individual tests. Normally Jest parallelizes testMod runs across processes but it is hard to debug many processes at the same time.
 
 ### Debugging Tests in Visual Studio Code
 
@@ -1677,7 +1677,7 @@ Use the following [`launch.json`](https://code.visualstudio.com/docs/editor/debu
       "request": "launch",
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",      
       "args": [
-        "test",
+        "testMod",
         "--runInBand",
         "--no-cache",
         "--env=jsdom"
@@ -1710,7 +1710,7 @@ You can also deploy your Storybook or style guide as a static app. This way, eve
 
 ### Getting Started with Storybook
 
-Storybook is a development environment for React UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components.
+Storybook is a development environment for React UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and testMod components.
 
 First, install the following npm package globally:
 
@@ -1830,10 +1830,10 @@ offline-first service worker in a development environment, as it can lead to
 frustration when previously cached assets are used and do not include the latest
 changes you've made locally.
 
-1. If you *need* to test your offline-first service worker locally, build
+1. If you *need* to testMod your offline-first service worker locally, build
 the application (using `npm run build`) and run a simple http server from your
 build directory. After running the build script, `create-react-app` will give
-instructions for one way to test your production build locally and the [deployment instructions](#deployment) have
+instructions for one way to testMod your production build locally and the [deployment instructions](#deployment) have
 instructions for using other methods. *Be sure to always use an
 incognito window to avoid complications with your browser cache.*
 
@@ -1907,7 +1907,7 @@ Then in `package.json`, add the following line to `scripts`:
 +    "analyze": "source-map-explorer build/static/js/main.*",
      "start": "react-scripts start",
      "build": "react-scripts build",
-     "test": "react-scripts test --env=jsdom",
+     "testMod": "react-scripts testMod --env=jsdom",
 ```
 
 Then to analyze the bundle run the production build then run the analyze
@@ -2334,7 +2334,7 @@ HOST | :white_check_mark: | :x: | By default, the development web server binds t
 PORT | :white_check_mark: | :x: | By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port.
 HTTPS | :white_check_mark: | :x: | When set to `true`, Create React App will run the development server in `https` mode.
 PUBLIC_URL | :x: | :white_check_mark: | Create React App assumes your application is hosted at the serving web server's root or a subpath as specified in [`package.json` (`homepage`)](#building-for-relative-paths). Normally, Create React App ignores the hostname. You may use this variable to force assets to be referenced verbatim to the url you provide (hostname included). This may be particularly useful when using a CDN to host your application.
-CI | :large_orange_diamond: | :white_check_mark: | When set to `true`, Create React App treats warnings as failures in the build. It also makes the test runner non-watching. Most CIs set this flag by default.
+CI | :large_orange_diamond: | :white_check_mark: | When set to `true`, Create React App treats warnings as failures in the build. It also makes the testMod runner non-watching. Most CIs set this flag by default.
 REACT_EDITOR | :white_check_mark: | :x: | When an app crashes in development, you will see an error overlay with clickable stack trace. When you click on it, Create React App will try to determine the editor you are using based on currently running processes, and open the relevant source file. You can [send a pull request to detect your editor of choice](https://github.com/facebookincubator/create-react-app/issues/2636). Setting this environment variable overrides the automatic detection. If you do it, make sure your systems [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) environment variable points to your editor’s bin folder. You can also set it to `none` to disable it completely.
 CHOKIDAR_USEPOLLING | :white_check_mark: | :x: | When set to `true`, the watcher runs in polling mode, as necessary inside a VM. Use this option if `npm start` isn't detecting changes.
 GENERATE_SOURCEMAP | :x: | :white_check_mark: | When set to `false`, source maps are not generated for a production build. This solves OOM issues on some smaller machines.
@@ -2356,9 +2356,9 @@ If this doesn’t happen, try one of the following workarounds:
 
 If none of these solutions help please leave a comment [in this thread](https://github.com/facebookincubator/create-react-app/issues/659).
 
-### `npm test` hangs on macOS Sierra
+### `npm testMod` hangs on macOS Sierra
 
-If you run `npm test` and the console gets stuck after printing `react-scripts test --env=jsdom` to the console there might be a problem with your [Watchman](https://facebook.github.io/watchman/) installation as described in [facebookincubator/create-react-app#713](https://github.com/facebookincubator/create-react-app/issues/713).
+If you run `npm testMod` and the console gets stuck after printing `react-scripts testMod --env=jsdom` to the console there might be a problem with your [Watchman](https://facebook.github.io/watchman/) installation as described in [facebookincubator/create-react-app#713](https://github.com/facebookincubator/create-react-app/issues/713).
 
 We recommend deleting `node_modules` in your project and running `npm install` (or `yarn` if you use it) first. If it doesn't help, you can try one of the numerous workarounds mentioned in these issues:
 

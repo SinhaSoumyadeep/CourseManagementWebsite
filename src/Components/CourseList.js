@@ -7,6 +7,9 @@ import $ from 'jquery';
 import CourseGrid from "./CourseGrid";
 
 
+var todayCount=0;
+var yesterdayCount=0;
+var weekCount=0;
 $(document).on("click","#toggleView",function () {
 
 
@@ -24,6 +27,7 @@ $(document).on("click","#toggleView",function () {
 
 
 })
+
 
 
  export default class CourseList extends React.Component
@@ -48,6 +52,7 @@ $(document).on("click","#toggleView",function () {
      componentDidMount() {
 
             this.findAllCourses()
+
      }
 
 
@@ -82,8 +87,29 @@ $(document).on("click","#toggleView",function () {
 
 
      courseRows() {
+         
+         todayCount=0;
+         yesterdayCount=0;
+         weekCount =0;
+
          var rows = this.state.courses.map((course) => {
-             return ( <CourseRow delete={this.deleteCourse} course={course} key={course.id} />)
+
+             return (
+
+
+                 <div >
+
+                    {this.checktime(course)}
+
+                     <CourseRow delete={this.deleteCourse} course={course} key={course.id} />
+
+
+
+                 </div>
+
+
+
+             )
 
          });
          return (
@@ -91,9 +117,102 @@ $(document).on("click","#toggleView",function () {
          )
      }
 
+
+     formatDate(date) {
+     var d = new Date(date),
+         month = '' + (d.getMonth() + 1),
+         day = '' + d.getDate(),
+         year = d.getFullYear();
+
+     if (month.length < 2) month = '0' + month;
+     if (day.length < 2) day = '0' + day;
+
+     return [year, month, day].join('-');
+    }
+
+
+     checktime(course)
+     {
+
+
+
+       var coursedate = String(course.created).substring(0,10)
+       var systemdate = this.formatDate(new Date())
+         var courseday=String(course.created).substring(8,10)
+         var coursemonth = String(course.created).substring(5,7)
+         var courseyear = String(course.created).substring(0,4)
+         var systemday=systemdate.substring(8,10)
+         var systemmonth = systemdate.substring(5,7)
+         var systemyear = systemdate.substring(0,4)
+
+
+         if(coursedate == systemdate)
+         {
+             if(todayCount == 0) {
+                 todayCount++;
+                 $("#courseCard".concat(course.id)).removeClass("col-sm-3")
+                 return (
+                        <div>
+                            <h6 style={{fontSize: "small"}}>Today</h6>
+                        </div>
+
+                 )
+             }
+
+
+         }
+         else if( courseyear==systemyear&&coursemonth==systemmonth&&parseInt(courseday)==(parseInt(systemday)-1))
+         {
+             if(yesterdayCount == 0) {
+                 yesterdayCount++;
+                 $("#courseCard".concat(course.id)).removeClass("col-sm-3")
+                 return(
+                        <div>
+                         <h6 style={{fontSize: "small"}}>Yesterday</h6>
+                        </div>
+
+                 )
+             }
+
+
+
+         }
+         else if(courseyear==systemyear&&coursemonth==systemmonth&&parseInt(courseday)<=(parseInt(systemday)-2))
+         {
+             if(weekCount == 0) {
+                 weekCount++;
+                 $("#courseCard".concat(course.id)).removeClass("col-sm-3")
+                 return(
+                     <div>
+                         <h6 style={{fontSize: "small"}}>Previous 7 days</h6>
+                     </div>
+
+                 )
+             }
+         }
+
+
+
+
+     }
      courseGrid() {
+         todayCount=0;
+         yesterdayCount=0;
          var grid = this.state.courses.map((course) => {
-             return ( <CourseGrid delete={this.deleteCourse} course={course} key={course.id} />)
+
+             return (
+
+
+                <div className="col-sm-3">
+
+
+                 <CourseGrid delete={this.deleteCourse} course={course} key={course.id} />
+
+
+                </div>
+
+
+             )
 
          });
          return (
@@ -142,6 +261,49 @@ $(document).on("click","#toggleView",function () {
 
 
      }
+
+     Search()
+     {
+        var key = this.refs.courseInput.value
+
+
+         this.courseService.findByCourseName(key).then((courses) => {
+
+             this.setState({courses: courses});
+
+
+         })
+
+         $('table> tbody:last').append(this.courseRows());
+
+
+
+     }
+     /*renderCourses(courses)
+     {
+
+         console.log(courses)
+         var i;
+         for (i = 0; i < courses.length; i++) {
+             var $row = $('<tr  id="trow['+courses[i].id+']">'+
+                 '<td id="crstitle['+courses[i].id+']">'+courses[i].title+'</td>'+
+                 '<td id="crsowner['+courses[i].id+']">'+courses[i].owner+'</td>'+
+                 '<td id="crscreated['+courses[i].id+']">'+courses[i].created+'</td>'+
+                 '</tr>');
+
+             $('table> tbody:last').append($row);
+         }
+
+
+
+
+
+
+     }*/
+
+
+
+
 
 
 
@@ -200,7 +362,7 @@ $(document).on("click","#toggleView",function () {
 
 
                  <div className="main">
-                     <table className="table">
+                     <table className="table" id="courseTable">
 
 
                          <tbody>
@@ -235,6 +397,10 @@ $(document).on("click","#toggleView",function () {
                          </tbody>
                      </table>
                  </div>
+
+                 <button className="btn btn-outline-dark btn-block" id={"search"} onClick={()=>this.Search()} >
+                     <i className="fa fa-search"></i>
+                 </button>
 
 
 

@@ -2,6 +2,7 @@
 const url= "http://localhost:8080/api/course"
 const addUrl = "http://localhost:8080/api/addcourse"
 const deleteUrl= "http://localhost:8080/api/delcourse"
+const searchUrl= "http://localhost:8080/api/search"
 
 let _singleton = Symbol();
 
@@ -45,6 +46,25 @@ class CourseService {
                 }
             ).then(function (response) {
             return response;
+        })
+
+    }
+
+    findByCourseName(coursetitle) {
+
+
+        var course= {title: coursetitle}
+
+        return fetch(searchUrl,
+            {
+                body: JSON.stringify(course),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST'
+            }
+        ).then(function (response) {
+            return response.json();
         })
 
     }

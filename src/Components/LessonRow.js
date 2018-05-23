@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import logo from '../Images/logo.jpg'
 
 
@@ -47,9 +48,11 @@ export default class LessonRow extends React.Component {
                                 <h5 className="card-title" style={{textAlign: "center"}}>
                                     {this.props.lesson.title}
                                     <span className="float-right">
-                                <button  className="btn btn-primary" >
-                                    <i className="fa fa-ellipsis-h"></i>
-                                </button>
+                                        <Link to={`/lesson/${this.props.lesson.id}/topics`}>
+                                            <button  className="btn btn-primary" >
+                                                <i className="fa fa-ellipsis-h"></i>
+                                            </button>
+                                        </Link>
                                         &nbsp;
                                         <button  className="btn btn-danger" onClick={()=>{this.abc(this.props.lesson.id)}}>
                                     <i className="fa fa-minus"></i>
