@@ -146,8 +146,8 @@ $(document).on("click","#toggleView",function () {
          var systemmonth = systemdate.substring(5,7)
          var systemyear = systemdate.substring(0,4)
 
-            alert(coursedate+" "+systemdate)
-         if(coursedate == systemdate)
+
+         if(courseyear==systemyear&&coursemonth==systemmonth&&parseInt(courseday)>=(parseInt(systemday)))
          {
              if(todayCount == 0) {
                  todayCount++;
