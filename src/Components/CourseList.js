@@ -146,12 +146,12 @@ $(document).on("click","#toggleView",function () {
          var systemmonth = systemdate.substring(5,7)
          var systemyear = systemdate.substring(0,4)
 
-
+            alert(coursedate+" "+systemdate)
          if(coursedate == systemdate)
          {
              if(todayCount == 0) {
                  todayCount++;
-                 $("#courseCard".concat(course.id)).removeClass("col-sm-3")
+
                  return (
                         <div>
                             <h6 style={{fontSize: "small"}}>Today</h6>
@@ -166,7 +166,7 @@ $(document).on("click","#toggleView",function () {
          {
              if(yesterdayCount == 0) {
                  yesterdayCount++;
-                 $("#courseCard".concat(course.id)).removeClass("col-sm-3")
+
                  return(
                         <div>
                          <h6 style={{fontSize: "small"}}>Yesterday</h6>
@@ -182,7 +182,7 @@ $(document).on("click","#toggleView",function () {
          {
              if(weekCount == 0) {
                  weekCount++;
-                 $("#courseCard".concat(course.id)).removeClass("col-sm-3")
+
                  return(
                      <div>
                          <h6 style={{fontSize: "small"}}>Previous 7 days</h6>
