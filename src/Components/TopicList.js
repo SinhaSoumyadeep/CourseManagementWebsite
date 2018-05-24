@@ -109,7 +109,7 @@ export default class TopicList extends React.Component {
 
                 <div className="navbar">
                     <div id ="home">
-                        <a href="http://localhost:3000/courses">
+                        <a href="/courses">
                             <i className="fa fa-home"></i>
                         </a>
                     </div>
