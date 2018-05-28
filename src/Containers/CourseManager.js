@@ -4,6 +4,7 @@ import CourseEditor from './CourseEditor'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import LessonList from "../Components/LessonList";
 import TopicList from "../Components/TopicList";
+import WidgetListModule from "../Components/WidgetList";
 
 
 
@@ -29,6 +30,8 @@ export default class CourseManager
                     <Route path="/course/:courseId/module/:moduleId" component={LessonList}>
                     </Route>
                     <Route path="/lesson/:lessonId/topics" component={TopicList}>
+                    </Route>
+                    <Route path="/topics/:topicId/widget" component={WidgetListModule}>
                     </Route>
 
 

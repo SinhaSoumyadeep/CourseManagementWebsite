@@ -1,8 +1,8 @@
 
-const url= "https://webdev-summer1-2018-sinha-sou.herokuapp.com/api/course"
-const addUrl = "https://webdev-summer1-2018-sinha-sou.herokuapp.com/api/addcourse"
-const deleteUrl= "https://webdev-summer1-2018-sinha-sou.herokuapp.com/api/delcourse"
-const searchUrl= "https://webdev-summer1-2018-sinha-sou.herokuapp.com/api/search"
+const url= "http://localhost:8080/api/course"
+const addUrl = "http://localhost:8080/api/addcourse"
+const deleteUrl= "http://localhost:8080/api/delcourse"
+const searchUrl= "http://localhost:8080/api/search"
 
 let _singleton = Symbol();
 

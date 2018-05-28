@@ -1,6 +1,6 @@
 let _singleton = Symbol();
-const MODULE_API_URL = 'https://webdev-summer1-2018-sinha-sou.herokuapp.com/api/lesson/LID';
-const deleteUrl = 'https://webdev-summer1-2018-sinha-sou.herokuapp.com/api/topic/TID';
+const MODULE_API_URL = 'http://localhost:8080/api/lesson/LID';
+const deleteUrl = 'http://localhost:8080/api/topic/TID';
 
 
 

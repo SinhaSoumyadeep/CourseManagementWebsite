@@ -192,3 +192,24 @@ z-index: auto;
 
 }
 
+.UpBtn{
+    float: left;
+
+}
+.DwnBtn{
+
+    float: left;
+}
+.selectWidget{
+    float: left;
+
+}
+.DeleteBtn{
+    float: left;
+
+}
+.AddWidget{
+
+    float: right;
+    position: sticky;
+}

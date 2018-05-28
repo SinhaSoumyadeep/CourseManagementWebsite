@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import logo from '../Images/logo.jpg'
 
 
@@ -27,7 +28,9 @@ export default class TopicRows extends React.Component {
                         <p>It uses utility classes for typography and spacing to space content out within the larger
                             container.</p>
                         <p className="lead">
-                            <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                            <Link to={`/topics/${this.props.topics.id}/widget`}>
+                            <button className="btn btn-primary btn-lg" role="button">Learn more</button>
+                            </Link>
                         </p>
 
                 </div>
