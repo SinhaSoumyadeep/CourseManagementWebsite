@@ -347,11 +347,11 @@ const Widget = ({ widget,widgetList,preview,dispatch}) => {
 
 
 
-                    <div className="UpBtn" style={{display: widget.widgetOrder == '0'?'none':''}}>
+                    <div className="UpBtn" style={{display: widget.widgetOrder == widgetList[0].widgetOrder?'none':''}}>
                         <button className="btn btn-warning" onClick={() => {dispatch(moveUp(widget))}}><i
                             className="fa fa-arrow-up"></i></button>
                     </div>
-                    <div className="DwnBtn" style={{display: widget.widgetOrder == (widgetList.length-1)?'none':''}}>
+                    <div className="DwnBtn" style={{display: widget.widgetOrder == (widgetList[widgetList.length-1].widgetOrder)?'none':''}}>
                         <button className="btn btn-warning" onClick={() => {dispatch(moveDown(widget))}}><i
                             className="fa fa-arrow-down"></i></button>
                     </div>
@@ -542,6 +542,16 @@ const widgets = (state = {widgets: [], preview: false}, action) => {
             return newState
 
         case 'ADD_WIDGET':
+
+            let wo
+            if(state.widgets.length == 0)
+            {
+                wo = 0;
+            }
+            else
+            {
+                wo = state.widgets[state.widgets.length-1].widgetOrder+1
+            }
             return {widgets: [...state.widgets,
                 {id: action.id,
                     widgetType: 'Heading',
@@ -550,7 +560,7 @@ const widgets = (state = {widgets: [], preview: false}, action) => {
                     size: '2',
                     linktext: 'Link Text',
                     listType: '1',
-                    widgetOrder: state.widgets.length
+                    widgetOrder: wo
 
                 }]}
         case 'DELETE_WIDGET':
