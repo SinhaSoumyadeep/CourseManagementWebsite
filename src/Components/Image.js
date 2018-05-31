@@ -17,7 +17,7 @@ export const Image = ({widget,preview,headingTextChanged,nameChanged}) => {
 
                 <input className="form-control" onChange={() => headingTextChanged(widget.id, inputElem.value)}
                        value={widget.text}
-                       ref={node => inputElem = node}/>
+                       ref={node => inputElem = node} placeholder="Enter Image URL"/>
 
                 <h3>Preview</h3>
             </div>
