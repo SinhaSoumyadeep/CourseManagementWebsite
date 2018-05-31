@@ -4,17 +4,23 @@ import { createStore } from 'redux'
 import { combineReducers } from 'redux'
 import { Provider, connect } from 'react-redux'
 import $ from 'jquery'
+import {Heading} from "./Heading";
+import {Paragraph} from "./Paragraph";
+import {Image} from "./Image";
+import {List} from "./List";
+import {Link} from "./Link";
+import {widgets} from "../Reducer/WidgetReducer";
+import * as actions from "../Actions/Actions"
 
 
 
 
-
-
-
+import * as constants from '../constants/constants'
+/*
 
 const headingTextChanged = (dispatch, widgetId, newText) => (
     dispatch({
-        type: 'HEADING_TEXT_CHANGED',
+        type: constants.HEADING_TEXT_CHANGED,
         id: widgetId,
         text: newText
     })
@@ -23,7 +29,7 @@ const headingTextChanged = (dispatch, widgetId, newText) => (
 
 const linkTextChanged = (dispatch, widgetId, newlinkText) => (
     dispatch({
-        type: 'LINK_TEXT_CHANGED',
+        type: constants.LINK_TEXT_CHANGED,
         id: widgetId,
         linktext: newlinkText
     })
@@ -31,10 +37,82 @@ const linkTextChanged = (dispatch, widgetId, newlinkText) => (
 
 const headingSizeChanged = (dispatch, widgetId, newSize) => (
     dispatch({
-        type: 'HEADING_SIZE_CHANGED',
+        type: constants.HEADING_SIZE_CHANGED,
         id: widgetId,
         size: newSize})
 )
+
+const changeOptn = (dispatch, widgetId, newText) => (
+    dispatch({
+        type: constants.LIST_CHANGED,
+        id: widgetId,
+        listType: newText
+    })
+)
+
+
+export const findAllWidgets = ({topicId,dispatch}) => {
+    let fetchUrl = 'http://localhost:8080/api/widget/TID'
+    fetchUrl = fetchUrl.replace('TID',topicId)
+    fetch(fetchUrl)
+        .then(response => (response.json()))
+        .then(widgets => dispatch({
+            type: constants.FIND_ALL_WIDGETS,
+            widgets: widgets }))
+}
+
+export const save = dispatch => (
+    dispatch({type: constants.WIDGET_SAVE})
+)
+
+
+export const preview = dispatch => (
+    dispatch({type: constants.WIDGET_PREVIEW})
+)
+
+
+
+const setTextWidget = (id, text) => ({type: 'SET_TEXT_WIDGET', id: id, text: text})
+
+
+const toggleEditing = (id, checked) => {
+    return {
+        type: constants.TOGGLE_EDITING,
+        id: id,
+        editing: checked
+    }}
+
+
+const setWidgetType = (id, widgetType) => {
+    return {
+        type: constants.SET_WIDGET_TYPE,
+        widgetType: widgetType, id: id
+    }
+}
+
+
+
+const moveUp = widget => {
+    return {
+        type: constants.MOVE_UP, widget: widget
+    }
+}
+
+const moveDown = widget => {
+    return {
+        type: constants.MOVE_DOWN, widget: widget
+    }
+}
+*/
+
+
+
+
+
+
+
+
+/*
 
 const Heading = ({widget,preview,headingTextChanged, headingSizeChanged}) => {
     let selectElem
@@ -94,8 +172,8 @@ const Paragraph = ({widget,preview,headingTextChanged, headingSizeChanged}) => {
             <div hidden={preview}>
 
                 <textarea className="form-control" onChange={() => headingTextChanged(widget.id, inputElem.value)}
-                       value={widget.text}
-                       ref={node => inputElem = node}/>
+                          value={widget.text}
+                          ref={node => inputElem = node}/>
 
                 <h3>Preview</h3>
             </div>
@@ -120,8 +198,8 @@ const Image = ({widget,preview,headingTextChanged}) => {
             <div hidden={preview}>
 
                 <input className="form-control" onChange={() => headingTextChanged(widget.id, inputElem.value)}
-                          value={widget.text}
-                          ref={node => inputElem = node}/>
+                       value={widget.text}
+                       ref={node => inputElem = node}/>
 
                 <h3>Preview</h3>
             </div>
@@ -161,17 +239,13 @@ const Link = ({widget,preview,headingTextChanged,linkTextChanged}) => {
     )
 }
 
+*/
 
 
 
-const changeOptn = (dispatch, widgetId, newText) => (
-    dispatch({
-        type: 'LIST_CHANGED',
-        id: widgetId,
-        listType: newText
-    })
-)
 
+
+/*
 
 const List = ({widget,preview,headingTextChanged,changeOptn}) => {
     let selectElemLink
@@ -188,8 +262,8 @@ const List = ({widget,preview,headingTextChanged,changeOptn}) => {
                 <div className="heading">
                     <div className="headingInput">
                         <textarea className="form-control" onChange={() => headingTextChanged(widget.id, inputElem.value)}
-                               value={widget.text}
-                               ref={node => inputElem = node}/>
+                                  value={widget.text}
+                                  ref={node => inputElem = node}/>
                     </div>
                     <div className="headingSelect">
                         <select className="form-control selOptn" onChange={()=>changeOptn(widget.id, selectElemLink.value)}
@@ -247,15 +321,17 @@ const List = ({widget,preview,headingTextChanged,changeOptn}) => {
     )
 }
 
+*/
 
 
 
 
 const dispathToPropsMapper = dispatch => ({
-    headingTextChanged: (widgetId, newText) => headingTextChanged(dispatch, widgetId, newText),
-    headingSizeChanged: (widgetId, newSize) => headingSizeChanged(dispatch, widgetId, newSize),
-    linkTextChanged: (widgetId, newText) => linkTextChanged(dispatch, widgetId, newText),
-    changeOptn: (widgetId, newText)=> changeOptn(dispatch, widgetId, newText)
+    headingTextChanged: (widgetId, newText) => actions.headingTextChanged(dispatch, widgetId, newText),
+    headingSizeChanged: (widgetId, newSize) => actions.headingSizeChanged(dispatch, widgetId, newSize),
+    linkTextChanged: (widgetId, newText) => actions.linkTextChanged(dispatch, widgetId, newText),
+    changeOptn: (widgetId, newText)=> actions.changeOptn(dispatch, widgetId, newText),
+    nameChanged: (widgetId, newText) => actions.nameChanged(dispatch, widgetId, newText)
 })
 
 const stateToPropsMapper = state => ({preview: state.widgets.preview})
@@ -269,26 +345,8 @@ const ListContainer = connect(stateToPropsMapper, dispathToPropsMapper)(List)
 
 
 
-export const findAllWidgets = ({topicId,dispatch}) => {
-    let fetchUrl = 'http://localhost:8080/api/widget/TID'
-    fetchUrl = fetchUrl.replace('TID',topicId)
-    fetch(fetchUrl)
-        .then(response => (response.json()))
-        .then(widgets => dispatch({
-            type: "FIND_ALL_WIDGETS",
-            widgets: widgets }))
-}
 
-export const save = dispatch => (
-    dispatch({type: 'WIDGET_SAVE'})
-)
-export const preview = dispatch => (
-    dispatch({type: 'WIDGET_PREVIEW'})
-)
-
-
-
- class WidgetList extends React.Component{
+class WidgetList extends React.Component{
 
     constructor(props)
     {
@@ -297,7 +355,7 @@ export const preview = dispatch => (
     }
 
 
-     render(){
+    render(){
 
         return(
             <div>
@@ -316,9 +374,9 @@ export const preview = dispatch => (
                 </div>
 
 
-            <ul>
-                {this.props.widgetListprops.widgets.map(widget => <WidgetContainer widgetList={this.props.widgetListprops.widgets} key={widget.id} preview={this.props.previewMode} widget={widget}/>)}
-            </ul>
+                <ul>
+                    {this.props.widgetListprops.widgets.map(widget => <WidgetContainer widgetList={this.props.widgetListprops.widgets} key={widget.id} preview={this.props.previewMode} widget={widget}/>)}
+                </ul>
             </div>
 
         )
@@ -348,17 +406,17 @@ const Widget = ({ widget,widgetList,preview,dispatch}) => {
 
 
                     <div className="UpBtn" style={{display: widget.widgetOrder == widgetList[0].widgetOrder?'none':''}}>
-                        <button className="btn btn-warning" onClick={() => {dispatch(moveUp(widget))}}><i
+                        <button className="btn btn-warning" onClick={() => {dispatch(actions.moveUp(widget))}}><i
                             className="fa fa-arrow-up"></i></button>
                     </div>
                     <div className="DwnBtn" style={{display: widget.widgetOrder == (widgetList[widgetList.length-1].widgetOrder)?'none':''}}>
-                        <button className="btn btn-warning" onClick={() => {dispatch(moveDown(widget))}}><i
+                        <button className="btn btn-warning" onClick={() => {dispatch(actions.moveDown(widget))}}><i
                             className="fa fa-arrow-down"></i></button>
                     </div>
                     <div className="selectWidget">
 
                         <select className="form-control" ref={node => select = node} value={widget.widgetType}
-                                onChange={e => {dispatch(setWidgetType(widget.id, select.value))}}>
+                                onChange={e => {dispatch(actions.setWidgetType(widget.id, select.value))}}>
                             <option>Heading</option>
                             <option>Paragraph</option>
                             <option>Image</option>
@@ -375,14 +433,7 @@ const Widget = ({ widget,widgetList,preview,dispatch}) => {
 
 
 
-                    <label>
-                        <input ref={node => editing = node}
-                               type="checkbox"
-                               onChange={e => {
-                                   dispatch(toggleEditing
-                                   (widget.id, editing.checked))}}
-                               checked={widget.editing}/> Editing
-                    </label>
+
                 </div>
             </div>
             <div>
@@ -411,41 +462,6 @@ const Widget = ({ widget,widgetList,preview,dispatch}) => {
 
 
 
-const setTextWidget = (id, text) => ({type: 'SET_TEXT_WIDGET', id: id, text: text})
-
-
-const toggleEditing = (id, checked) => {
-    return {
-        type: 'TOGGLE_EDITING',
-        id: id,
-        editing: checked
-    }}
-
-
-const setWidgetType = (id, widgetType) => {
-    return {
-        type: 'SET_WIDGET_TYPE',
-        widgetType: widgetType, id: id
-    }
-}
-
-
-
-const moveUp = widget => {
-    return {
-        type: 'MOVE_UP', widget: widget
-    }
-}
-
-const moveDown = widget => {
-    return {
-        type: 'MOVE_DOWN', widget: widget
-    }
-}
-
-
-
-
 
 let nextWidgetId =1000
 class AddWidgetComponent extends React.Component {
@@ -467,7 +483,7 @@ class AddWidgetComponent extends React.Component {
 
 
 
-
+/*
 
 const widgets = (state = {widgets: [], preview: false}, action) => {
     switch (action.type) {
@@ -522,21 +538,20 @@ const widgets = (state = {widgets: [], preview: false}, action) => {
             let topicIdcheat= $(".storeTopic").val()
             let saveUrl= 'http://localhost:8080/api/widget/save/TID'
             saveUrl= saveUrl.replace('TID',topicIdcheat)
-            alert(saveUrl)
             fetch(saveUrl, {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
                 headers: {
                     'content-type': 'application/json'}
-            }).then(
-                window.location.replace("/topics/TID/widget".replace('TID',topicIdcheat))
+            }).then(()=>{
+
+                    newState = JSON.parse(JSON.stringify(state))
+                    window.location.replace("/topics/TID/widget".replace('TID',topicIdcheat))
+                    return newState
+
+                }
+
             )
-
-
-
-
-
-
 
             newState = JSON.parse(JSON.stringify(state))
             return newState
@@ -553,16 +568,16 @@ const widgets = (state = {widgets: [], preview: false}, action) => {
                 wo = state.widgets[state.widgets.length-1].widgetOrder+1
             }
             return {widgets: [...state.widgets,
-                {id: action.id,
-                    widgetType: 'Heading',
-                    topicId: action.topicId,
-                    text: 'New Widget',
-                    size: '2',
-                    linktext: 'Link Text',
-                    listType: '1',
-                    widgetOrder: wo
+                    {id: action.id,
+                        widgetType: 'Heading',
+                        topicId: action.topicId,
+                        text: 'New Widget',
+                        size: '2',
+                        linktext: 'Link Text',
+                        listType: '1',
+                        widgetOrder: wo
 
-                }]}
+                    }]}
         case 'DELETE_WIDGET':
             let delArr= state.widgets
             let widgetArr = delArr.filter(widget => widget.id == action.id)
@@ -628,7 +643,7 @@ const widgets = (state = {widgets: [], preview: false}, action) => {
 
         default: return state
     }
-}
+}*/
 
 Array.prototype.move
     = function (from, to) {
@@ -646,9 +661,9 @@ const mapStateToProps = state => ({
 })
 
 const dispatcherToPropsMapper = dispatch => ({
-    findAllWidgets: (topicId) => findAllWidgets({topicId,dispatch}),
-    save: () => save(dispatch),
-    preview: () => preview(dispatch)
+    findAllWidgets: (topicId) => actions.findAllWidgets({topicId,dispatch}),
+    save: () => actions.save(dispatch),
+    preview: () => actions.preview(dispatch)
 
 })
 const AddWidgetContainer = connect()(AddWidgetComponent)
@@ -698,15 +713,14 @@ export default class WidgetListModule extends React.Component{
     {
 
         return(
-                    <div>
-                        <input className="storeTopic" hidden/>
-                        <Provider store={store}><App topicId={this.props.match.params.topicId}/></Provider>
-                    </div>
+            <div>
+                <input className="storeTopic" hidden/>
+                <Provider store={store}><App topicId={this.props.match.params.topicId}/></Provider>
+            </div>
 
 
         )
     }
 
 }
-
 

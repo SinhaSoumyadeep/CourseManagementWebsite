@@ -314,3 +314,10 @@ input:checked + .slider:before {
     padding-top: 12px;
     padding-bottom: 52px;
 }
+.exitDiv{
+    color: #eaeaea;
+}
+.WidgetName{
+
+    margin-bottom: 5px;
+}
