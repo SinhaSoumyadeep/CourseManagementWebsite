@@ -82,6 +82,7 @@ export default class TopicList extends React.Component {
             this.topicService.createTopicForLesson(this.state.lessonId, topicObj)
                 .then(() => { this.findAllTopics() });
         }
+        this.refs.topicInput.value='';
 
 
     }
