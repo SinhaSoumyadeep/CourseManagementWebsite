@@ -23,7 +23,7 @@ export const List = ({widget,preview,headingTextChanged,changeOptn,nameChanged})
                         <textarea className="form-control" onChange={() => headingTextChanged(widget.id, inputElem.value)}
                                   value={widget.text}
                                   ref={node => inputElem = node}
-                                  placeholder="Enter Text..."/>
+                                  placeholder="Enter one list item per line"/>
                     </div>
                     <div className="headingSelect">
                         <select className="form-control selOptn" onChange={()=>changeOptn(widget.id, selectElemLink.value)}
